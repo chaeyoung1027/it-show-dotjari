@@ -1,4 +1,4 @@
-import './App.css';
+
 import ImaginationCafe from './components/ImaginationCafe';
 import MainTop from './components/MainTop';
 import BottomInfo from './components/BottomInfo'
@@ -11,11 +11,11 @@ function App() {
 
     {/*효과넣기*/}
       <div>  
-        {/* <ImaginationCafe /> */}
+        <ImaginationCafe />
         <BottomInfo/>
       </div>
 
-      {/* <ReservPlace/> */}
+      <ReservPlace/>
       
     </div>
   );
