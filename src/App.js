@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import ImaginationCafe from './components/ImaginationCafe';
+import MainTop from './components/MainTop';
+import BottomInfo from './components/BottomInfo'
+import ReservPlace from './components/ReservPlace';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MainTop/>
+
+    {/*효과넣기*/}
+      <div className='middlePart'>  
+        <ImaginationCafe />
+        <BottomInfo/>
+      </div>
+
+      <ReservPlace/>
+      
     </div>
   );
 }

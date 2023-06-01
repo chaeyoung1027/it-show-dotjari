@@ -1,0 +1,42 @@
+
+.MainTopStyle{
+    margin-top:2%;
+    margin-bottom: 2%;
+  }
+  .selectMenu {
+    font-size: 15px;
+    margin-right: 4%;
+    display: inline-block; /* 요소를 같은 줄에 위치하도록 설정 */
+  }
+  .title {
+    margin-left: 15%;
+    margin-right: 35%;
+    width: 68px;
+    height: 21px;
+    left: 250px;
+    top: 48px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 21px;
+  }
+  .Name{
+    padding : 8px;
+    padding-left: 1.7%;
+    padding-right: 1.7%;
+    background-color: #7c00de;
+    border-radius: 20px;
+    color: white;
+    margin-right: 1%;
+    margin-left: 1.5%;
+  }
+  .profile {
+    width: 35px;
+    height: 35px;
+    left: 1635px;
+    border-radius: 25px;
+    vertical-align: middle; /* 수직 정렬 */
+    margin-bottom: 0.5%;
+    margin-right: 13%;
+  }
