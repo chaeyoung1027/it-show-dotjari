@@ -11,10 +11,9 @@ function UserInfo() {
   const [snumber, setSnumber] = useState('');
   const [sname, setSname] = useState('');
 
-  function handleLogin() {
-    console.log('Login button clicked');
-    console.log('Email:', snumber);
-    console.log('Password:', sname);
+  function handleUserInfo() {
+    console.log('Student Number:', snumber);
+    console.log('Student Name:', sname);
   }
 
   return (
@@ -36,7 +35,7 @@ function UserInfo() {
         <br /><br /><br />
         <br /><br /><br />
         <br />
-        <button id="btn" onClick={handleLogin}>시작하기</button>
+        <button id="btn" onClick={handleUserInfo}>시작하기</button>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
     </div>

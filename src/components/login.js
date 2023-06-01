@@ -12,13 +12,13 @@ function Login() {
   const [password, setPassword] = useState('');
 
   function handleLogin() {
-    console.log('Login button clicked');
     console.log('Email:', email);
     console.log('Password:', password);
   }
 
   function handleSignUp() {
-    console.log('Sign-up button clicked');
+    console.log('Email:', email);
+    console.log('Password:', password);;
     ReactDOM.render(<SignUp />, document.getElementById('root')); // SignUp 컴포넌트로 렌더링
   }
 
@@ -61,14 +61,14 @@ function SignUp() {
   const [password, setPassword] = useState('');
 
   function handleLogin() {
-    console.log('Login button clicked');
     console.log('Email:', email);
     console.log('Password:', password);
     ReactDOM.render(<Login />, document.getElementById('root'));
   }
 
   function handleSignUp() {
-    console.log('Sign-up button clicked');
+    console.log('Email:', email);
+    console.log('Password:', password);
   }
 
   return (
