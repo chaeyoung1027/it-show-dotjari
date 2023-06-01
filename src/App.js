@@ -10,12 +10,12 @@ function App() {
       <MainTop/>
 
     {/*효과넣기*/}
-      <div className='middlePart'>  
-        <ImaginationCafe />
+      <div>  
+        {/* <ImaginationCafe /> */}
         <BottomInfo/>
       </div>
 
-      <ReservPlace/>
+      {/* <ReservPlace/> */}
       
     </div>
   );
