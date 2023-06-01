@@ -1,1 +1,2 @@
-import '../src/components/login'
+// import '../src/components/Login'
+import '../src/components/UserInfo'

@@ -26,7 +26,7 @@ function Login() {
     <div className="container">
       <p className="background">DotJari</p>
       <div className="login">
-        <br />
+        <br /><br />
         <strong>로그인</strong>
         <br /><br />
         <div style={{ position: 'relative', height: '40px' }}>
@@ -75,7 +75,7 @@ function SignUp() {
     <div className="container">
       <p className="background">DotJari</p>
       <div className="login">
-        <br />
+        <br /><br />
           <strong>회원가입</strong>
           <br /><br />
           <div style={{ position: 'relative', height: '40px' }}>
@@ -102,5 +102,7 @@ function SignUp() {
     </div>
   );
 }
+
+
 
 ReactDOM.render(<Login />, document.getElementById('root'));
