@@ -25,8 +25,7 @@ function ImaginationCafe() {
     ];
   
     return (
-        <div className='allbox'>
-
+        <div>
         <div className="sub-title">
           <h2>상상카페 : {SelectedSeats.join(", ")}</h2>
           <h4 className="Explanation">
