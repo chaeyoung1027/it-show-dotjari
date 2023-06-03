@@ -1,114 +1,89 @@
-.Reserv{
-    /* margin-bottom: 20%; */
-    /* position: absolute; */
-    /* right: 20%; */
+.ReservAll {
+  float: right;
+  text-align: left;
+  margin-right: 14%;
 }
 
-.ReservAll{
-    float:right;
-    text-align: left;
-    margin-right: 15%;
-    /* background-color: aqua; */
+.reservContainer {
+  position: relative;
 }
 
-.bar{
-
-    width: 2px;
-    height: 76vh;
-    background-color: #9B9B9B;
-    position: absolute;
-    right: 35%;
-   
-
+.bar {
+  width: 2px;
+  height: 80%;
+  background-color: #9B9B9B;
+  position: absolute;
+  right: 31.4%;
 }
 
-.text{
-width: 260px;
-height: 90px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 150%;
-align-items: center;
-/* float: right; */
-text-align: left;
+.reservText {
+  font-family: 'Inter';
+  font-style:normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
+  margin-top: 5%;
 }
 
-.resInfo{
-    position: absolute;
-    width : 14.5%;
-    height : 8%;
-    margin-top:1%;
-    background: #FFFFFF;
-/* 그림자 */
-
-box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
-border-radius: 20px;
-
-    /*글씨에 대한 효과*/
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 30px;
-}
-.resPosition, .resTime{
-    margin-left: 10%;
+.resInfo {
+  position: absolute;
+  width: 14.5%;
+  height: 8%;
+  margin-top: 1%;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
 }
 
-.resPosition{
-    margin-top: 4%;
-    height: 30px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    /* line-height: 30px; */
-    /* identical to box height, or 200% */
-
-    display: flex;
-    align-items: center;
-
-    color: #000000;
+.resPosition, .resTime {
+  margin-left: 10%;
 }
 
-.resTime{
-    position: absolute;
-    width: 75px;
-    height: 30px;
-    
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 30px;
-    /* identical to box height, or 200% */
-    
-    display: flex;
-    align-items: center;
-    
-    color: #9B9B9B;
-    
+.resPosition {
+  margin-top: 4%;
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  color: #000000;
 }
 
-.resDate{
-    position: absolute;
-    width: 76px;
-    height: 30px;
-    
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 30px;
-    /* identical to box height, or 214% */
-    
-    display: flex;
-    align-items: center;
-    
-    color: #9B9B9B;
-    margin-left : 65%;
-    
+.resTime {
+  position: absolute;
+  width: 75px;
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #9B9B9B;
+}
+
+.resDate {
+  position: absolute;
+  width: 76px;
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  color: #9B9B9B;
+  margin-left: 65%;
 }

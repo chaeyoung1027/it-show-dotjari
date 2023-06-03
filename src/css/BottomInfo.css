@@ -1,8 +1,10 @@
 .possible,
 .Npossible {
+  margin-left: 3%;
+  margin-right: 0.5%;
   box-sizing: border-box;
-  width: 2%;
-  height: 2.1vh;
+  width: 2.6%;
+  height: 35%;
   border-radius: 5px;
 }
 
@@ -17,32 +19,28 @@
 }
 
 .BottomInfoAll {
-    margin-top: 3%;
+  margin-top: 3%;
   display: flex; /* 플렉스 디스플레이 적용 */
   align-items: center; /* 컨텐츠를 수직으로 가운데로 정렬 */
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   margin-left : 13%;
   margin-right : 13%;
-  padding-top: 0.3%;
-  padding-bottom: 0.6%;
-  padding-left: 0.3%;
+  height: 70px;
 }
 
 .text {
   display: flex;
-  text-align: center;
   white-space: nowrap; /* 줄 바꿈 방지 */
-  font-size: 14px;
-  margin-right: 1%;
+  font-size: 13px;
+  margin-left: 0.3%;
 }
 
 .ResvButton {
-  width: 25%;
+  width: 13%;
   height: 30px;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 20px;
-  margin-left: 40%; /* 버튼과 링크 사이의 간격을 위한 마진 추가 */
-  margin-right: 5%;
+  margin-left: 58%; /* 버튼과 링크 사이의 간격을 위한 마진 추가 */
 }

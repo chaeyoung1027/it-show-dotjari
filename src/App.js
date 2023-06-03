@@ -1,8 +1,8 @@
+import './App.css';
 import ImaginationCafe from './components/ImaginationCafe';
 import MainTop from './components/MainTop';
 import BottomInfo from './components/BottomInfo'
 import ReservPlace from './components/ReservPlace';
-import '../src/App.css'
 
 function App() {
   return (
@@ -10,12 +10,10 @@ function App() {
       <MainTop/>
 
     {/*효과넣기*/}
-      <div className='ImaginationWBottom'>  
+      <div className='ReservPAll'>  
         <ImaginationCafe />
-        <BottomInfo/>
+        <ReservPlace/>
       </div>
-
-      <ReservPlace/>
       
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SelectDate from './SelectDate'
 import Seat from './Seat'
 import '../css/ImaginationCafe.css'
+import BottomInfo from './BottomInfo';
 
 /*상상카페 자리 예약*/
 function ImaginationCafe() {
@@ -25,7 +26,8 @@ function ImaginationCafe() {
     ];
   
     return (
-        <div>
+        <div className='ImaginationCafeAll'>
+
         <div className="sub-title">
           <h2>상상카페 : {SelectedSeats.join(", ")}</h2>
           <h4 className="Explanation">
@@ -33,7 +35,7 @@ function ImaginationCafe() {
           </h4>
         </div>
           <SelectDate />
-
+          
         <div className="cafe-seats-container">
           {seatsData.map((row, index) => (
             <div key={index}>
@@ -48,6 +50,7 @@ function ImaginationCafe() {
             </div>
           ))}
         </div>
+        <BottomInfo/>
       </div>
     );
   }
