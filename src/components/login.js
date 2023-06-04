@@ -47,7 +47,7 @@ function Login() {
         <br /><br /><br />
         <input type="checkbox" />로봇이 아닙니다.
         <br /><br />
-        <button id="btn_login" onClick={handleLogin}>로그인</button>
+        <button id="btn_login" onClick={handleLogin} style={{ background: '#7C00DE' }}>로그인</button>
         <br /><br />
         <button id="btn" onClick={handleSignUp}>회원가입</button>
       </div>
@@ -94,7 +94,7 @@ function SignUp() {
             </div>
           </div>
           <br/><br/><br/><br/><br/>
-        <button id="btn" onClick={handleSignUp}>회원가입</button>
+        <button id="btn" onClick={handleSignUp} style={{ background: '#7C00DE' }}>회원가입</button>
         <br /><br />
         <button id="btn_login" onClick={handleLogin}>로그인</button>
       </div>
