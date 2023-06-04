@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import '../css/index.css';
+import '../css/Login.css';
 
 //img
 import circleIcon from '../img/circle.png';
-import emailIcon from '../img/email.png';
-import uncheckIcon from '../img/unchecked.png';
 
 function UserInfo() {
   const [snumber, setSnumber] = useState('');
