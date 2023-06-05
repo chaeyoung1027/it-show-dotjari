@@ -1,23 +1,41 @@
-.sub-title {
+.LibraryAll {
+  width: 80%;
+  margin-left: 4%;
+  height: 10%;
+}
+
+.Lsub-title {
   margin-left: 13%;
   font-weight: bold;
 }
-.Explanation {
+
+.LExplanation {
   margin-top: 0.6%;
   color: #a5a5a5;
   font-weight: 100;
 }
-/* 좌석을 위한 그리드 레이아웃 정의 */
-.cafe-seats-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 170%;
+
+.Library-seats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-left: 13%;
-  margin-top: 3%;
-  width: 5%;  /*좌석 간 거리 조절 가능*/
-  align-items: center;
+  margin-top: 5%;
 }
-/* 각 좌석에 대한 스타일 */
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-seat {
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  margin-right: 10px;
+}
+
 .seat {
   width: 50px;
   height: 50px;
@@ -30,21 +48,18 @@
   background: #f7f7f7;
   font-weight: bold;
 }
+
 .available {
   /* 예약 가능한 좌석 */
   border: 2px solid #dddddd;
 }
-/* 선택된 좌석에 대한 스타일 */
+
 .selected {
   border: 2px solid #7c00de;
 }
-.seats-container {
-  margin-left: 15%;
-  display: flex;
-  gap: 10px;  /*좌석 사이 조절*/
-}
 
-.ImaginationCafeAll{
+.LibraryAll {
   width: 80%;
   margin-left: 4%;
+  height: 10%;
 }

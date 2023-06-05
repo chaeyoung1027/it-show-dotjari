@@ -1,21 +1,34 @@
 import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ImaginationCafe from './components/ImaginationCafe';
-import MainTop from './components/MainTop';
-import BottomInfo from './components/BottomInfo'
 import ReservPlace from './components/ReservPlace';
+import SelectPlace from './components/SelectPlace';
+import Library from './components/Library';
+import Profile from './img/Profile.jpg';
 
 function App() {
   return (
-    <div>
-      <MainTop/>
+    <Router>
+      <div className='MainTopStyle'>
+        <Link to="/selectplace" className="title">DotJari.</Link>
+        <Link to="/ImaginationCafe" className='selectMenu'> 상상카페 </Link>
+        <Link to="/library" className='selectMenu'> 도서관 </Link>
+        <Link to="/reservplace" className='selectMenu'> 예약현황 </Link>
+        <a className='Name'>3333 성이름</a>
+        <img className='profile' alt="profile" src={Profile} />
+      </div>
 
-    {/*효과넣기*/}
-      <div className='ReservPAll'>  
-        <ImaginationCafe />
+      <div className='ReservPAll'>
+        <Routes>
+          <Route path="/selectplace" element={<SelectPlace />} />
+          <Route path="/imaginationcafe" element={<ImaginationCafe />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/reservplace" element={<ReservPlace />} />
+        </Routes>
         <ReservPlace/>
       </div>
-      
-    </div>
+    </Router>
   );
 }
 
