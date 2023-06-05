@@ -1,55 +1,95 @@
 .sub-title {
     margin-left: 13%;
     font-weight: bold;
-}
-.Explanation {
+  }
+  
+  .Explanation {
     margin-top: 0.6%;
     color: #a5a5a5;
     font-weight: 100;
-}
-.clubIcon, .ProjectIcon {
+  }
+  
+  .clubIcon,
+  .ProjectIcon {
+    width: 13%;
     margin-top: 5%;
-    border: 2px solid #E1C7F5;
-    box-shadow: 2px 2px 8px #E1C7F5;
+    border: 2px solid #e1c7f5;
+    box-shadow: 2px 2px 8px #e1c7f5;
     border-radius: 20px;
-    padding:8%;
+    padding: 8%;
     padding-top: 9%;
-}
-.clubIcon{
+  }
+  
+  .clubIcon {
     margin-left: 13%;
-}
-.ProjectIcon{
+  }
+  
+  .ProjectIcon {
     margin-left: 6%;
-}
-.SelectPlaceAll{
-  width: 80%;
-  margin-left: 4%;
-}
-.sub-title {
+  }
+  
+  .clubIcon,
+  .ProjectIcon {
+    width: 13%;
+    margin-top: 5%;
+    border: 2px solid #e1c7f5;
+    box-shadow: 2px 2px 8px #e1c7f5;
+    border-radius: 20px;
+    padding: 8%;
+    padding-top: 9%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .clubIcon.hovered,
+  .ProjectIcon.hovered {
+    border-color: #b250fe;
+    box-shadow: 2px 2px 8px #b250fe;
+  }
+  
+  .SelectPlaceAll {
+    width: 80%;
+    margin-left: 4%;
+  }
+  
+  .sub-title {
     margin-left: 13%;
     font-weight: bold;
-}
-.Explanation {
+  }
+  
+  .Explanation {
     margin-top: 0.6%;
     font-weight: 100;
-}
-
-.Club{
+  }
+  
+  .Club {
     margin-left: 14.5%;
-}
-.Project{
-    margin-left: 10%;
-}
-.PlaceKind{
+  }
+  
+  .Project {
+    margin-left: 12.5%;
+  }
+  
+  .Club.hovered .PlaceKind,
+  .Project.hovered .PlaceKind,
+  .Club.hovered .PlaceKindExp,
+  .Project.hovered .PlaceKindExp {
+    color: #4f008d;
+  }
+  
+  .PlaceKind {
     font-weight: 1000;
     color: #a5a5a5;
     font-size: 140%;
-}
-.PlaceKindExp{
-    color :#a5a5a5;
-}
-.SelectPlace{
+  }
+  
+  .PlaceKindExp {
+    color: #a5a5a5;
+  }
+  
+  .SelectPlace {
+    margin-left: 0.5%;
     margin-top: 2%;
     display: flex;
     text-align: center;
-}
+  }
+  

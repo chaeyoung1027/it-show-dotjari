@@ -14,13 +14,14 @@ function App() {
         <Link to="/selectplace" className="title">DotJari.</Link>
         <Link to="/ImaginationCafe" className='selectMenu'> 상상카페 </Link>
         <Link to="/library" className='selectMenu'> 도서관 </Link>
-        <Link to="/reservplace" className='selectMenu'> 예약현황 </Link>
+        <Link to="/selectplace" className='selectMenu'> 예약현황 </Link>  
         <a className='Name'>3333 성이름</a>
         <img className='profile' alt="profile" src={Profile} />
       </div>
 
       <div className='ReservPAll'>
         <Routes>
+          <Route path='/' element={<SelectPlace/>}/>
           <Route path="/selectplace" element={<SelectPlace />} />
           <Route path="/imaginationcafe" element={<ImaginationCafe />} />
           <Route path="/library" element={<Library />} />
