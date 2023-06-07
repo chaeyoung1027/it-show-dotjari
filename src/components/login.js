@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import '../css/Login.css';
-import SignUp from './SignUp';
 
 //img
 import circleIcon from '../img/circle.png';
@@ -55,5 +54,5 @@ function Login() {
     </div>
   );
 }
-
+export default Login
 ReactDOM.render(<Login />, document.getElementById('root'));
