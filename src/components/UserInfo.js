@@ -40,5 +40,5 @@ function UserInfo() {
   );
 }
 
-
+export default UserInfo;
 ReactDOM.render(<UserInfo />, document.getElementById('root'));
