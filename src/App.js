@@ -16,9 +16,9 @@ function Layout() {
   return <div>
       <div className='MainTopStyle'>
         <Link to="/places" className="title">DotJari.</Link>
-        <Link to="/ImaginationCafe" className='selectMenu'> 상상카페 </Link>
-        <Link to="/library" className='selectMenu'> 도서관 </Link>
-        <Link to="/selectplace" className='selectMenu'> 학교 지도 </Link>  
+        <Link to="/places/imaginationcafe" className='selectMenu'> 상상카페 </Link>
+        <Link to="/places/library" className='selectMenu'> 도서관 </Link>
+        <Link to="/places" className='selectMenu'> 학교 지도 </Link>  
         <a className='Name'>3333 성이름</a>
         <img className='profile' alt="profile" src={Profile} />
       </div>

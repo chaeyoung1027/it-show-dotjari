@@ -30,7 +30,7 @@
   
   .clubIcon,
   .ProjectIcon {
-    width: 13%;
+    width: 11%;
     margin-top: 5%;
     border: 2px solid #e1c7f5;
     box-shadow: 2px 2px 8px #e1c7f5;
@@ -66,7 +66,7 @@
   }
   
   .Project {
-    margin-left: 12.5%;
+    margin-left: 15%;
   }
   
   .Club.hovered .PlaceKind,
