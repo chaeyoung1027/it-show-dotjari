@@ -1,12 +1,12 @@
 .ReservPAll {
     display: flex;
     justify-content: space-between;
-  }
+}
 
-  .MainTopStyle{
+.MainTopStyle{
     margin-top:2.5%;
     margin-bottom: 3.6%;
-  }
+}
 .selectMenu {
     font-size: 15px;
     margin-right: 5%;
