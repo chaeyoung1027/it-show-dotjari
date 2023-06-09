@@ -6,7 +6,7 @@ import ImaginationCafe from './components/ImaginationCafe';
 import ReservPlace from './components/ReservPlace';
 import SelectPlace from './components/SelectPlace';
 import Library from './components/Library';
-import Login from './components/login';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
 import UserInfo from './components/UserInfo';
 //img
