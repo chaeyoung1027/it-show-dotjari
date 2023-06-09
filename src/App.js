@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
 
 import ImaginationCafe from './components/ImaginationCafe';
 import ReservPlace from './components/ReservPlace';
@@ -13,9 +13,8 @@ import UserInfo from './components/UserInfo';
 //img
 import Profile from './img/Profile.jpg';
 
-function App() {
-  return (
-    <Router>
+function Layout() {
+  return <div>
       <div className='MainTopStyle'>
         <Link to="/login" className='login'>로그인</Link>
         <Link to="/signup">회원가입</Link>
@@ -27,22 +26,27 @@ function App() {
         <a className='Name'>3333 성이름</a>
         <img className='profile' alt="profile" src={Profile} />
       </div>
+    <Outlet />
+    <ReservPlace />
+  </div>
+}
 
-
-
-      <div className='ReservPAll'>
+function App() {
+  return (
+    <Router>
         <Routes>
-          <Route path='/' element={<Login/>}/>
+          {/* <Route path='/' element={<Login/>}/> */}
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>
           <Route path='/userinfo' element={<UserInfo/>}/>
-          <Route path="/selectplace" element={<SelectPlace />} />
-          <Route path="/imaginationcafe" element={<ImaginationCafe />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/reservplace" element={<ReservPlace />} />
+
+          <Route path="/places" element={<Layout />}>
+            <Route index element={<SelectPlace />} />
+            <Route path="imaginationcafe" element={<ImaginationCafe />} />
+            <Route path="library" element={<Library />} />
+          </Route>
         </Routes>
-        <ReservPlace/>
-      </div>
+      
     </Router>
   );
 }
