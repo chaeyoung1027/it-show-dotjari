@@ -45,11 +45,6 @@
     border-color: #b250fe;
     box-shadow: 2px 2px 8px #b250fe;
   }
-  
-  .SelectPlaceAll {
-    width: 80%;
-    margin-left: 4%;
-  }
   .Explanation {
     margin-top: 0.6%;
     font-weight: 100;
@@ -70,6 +65,11 @@
     color: #4f008d;
   }
   
+  .SelectPlaceAll {
+    width: 80%;
+    margin-left: 3%;
+  }
+  
   .PlaceKind {
     font-weight: 1000;
     color: #a5a5a5;
@@ -78,6 +78,8 @@
   
   .PlaceKindExp {
     color: #a5a5a5;
+    display: flex;
+    margin-top: 5%;
   }
   
   .SelectPlace {
