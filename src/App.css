@@ -11,6 +11,8 @@
     font-size: 15px;
     margin-right: 5%;
     display: inline-block; /* 요소를 같은 줄에 위치하도록 설정 */
+    text-decoration: none;
+    color: black;
 }
 .title {
     margin-left: 13%;
@@ -24,6 +26,8 @@
     font-weight: bold;
     font-size: 17px;
     line-height: 21px;
+    color: black;
+    text-decoration: none;
 }
 .Name{
     padding : 8px;

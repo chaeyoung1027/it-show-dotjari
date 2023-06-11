@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import '../css/Login.css';
 
 //img
@@ -16,11 +17,6 @@ function Login() {
     console.log('Password:', password);
   }
 
-  function handleSignUp() {
-    console.log('Email:', email);
-    console.log('Password:', password);
-  }
-
   return (
     <div className="container">
       <p className="background">DotJari</p>
@@ -29,18 +25,28 @@ function Login() {
         <strong>로그인</strong>
         <br /><br />
         <div style={{ position: 'relative', height: '40px' }}>
-          <input id="btn" type="email" placeholder="이메일을 작성해 주세요" value={email}
-            onChange={(e) => setEmail(e.target.value)} />
+          <input
+            id="btn"
+            type="email"
+            placeholder="이메일을 작성해 주세요"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
             <input className="email-icon" type="image" src={emailIcon} alt="제출버튼" />
           </div>
         </div>
-        <br /><br/>
+        <br /><br />
         <div style={{ position: 'relative', height: '40px' }}>
-          <input id="btn" type="password" placeholder="비밀번호를 입력해 주세요" value={password}
-            onChange={(e) => setPassword(e.target.value)} />
+          <input
+            id="btn"
+            type="password"
+            placeholder="비밀번호를 입력해 주세요"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
-          <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
+            <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
           </div>
         </div>
         <br /><br /><br />
@@ -48,11 +54,33 @@ function Login() {
         <br /><br />
         <button id="btn" onClick={handleLogin} style={{ background: '#7C00DE', color: '#fff' }}>로그인</button>
         <br /><br />
-        <button id="btn" onClick={handleSignUp}>회원가입</button>
+        <Link to="/signup">
+          <button id="btn">회원가입</button>
+        </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
     </div>
   );
 }
+
+function Signup() {
+  return (
+    <div>
+      <h1>Signup Page</h1>
+      {/* Add your signup form here */}
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <Router>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+    </Routes>
+  </Router>,
+  document.getElementById('root')
+);
+
 
 export default Login

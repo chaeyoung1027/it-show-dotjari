@@ -50,23 +50,17 @@
     width: 80%;
     margin-left: 4%;
   }
-  
-  .sub-title {
-    margin-left: 13%;
-    font-weight: bold;
-  }
-  
   .Explanation {
     margin-top: 0.6%;
     font-weight: 100;
   }
   
   .Club {
-    margin-left: 14.5%;
+    margin-left: 16%;
   }
   
   .Project {
-    margin-left: 15%;
+    margin-left: 14%;
   }
   
   .Club.hovered .PlaceKind,
