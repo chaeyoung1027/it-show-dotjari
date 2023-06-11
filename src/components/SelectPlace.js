@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/SelectPlace.css';
 import clubIcon from '../img/club.png';
 import clubIcon2 from '../img/club2.png';
@@ -34,13 +35,16 @@ function SelectPlace() {
         </h4>
       </div>
       <div>
-        <img
-          className={`clubIcon ${isClubIconHovered ? 'hovered' : ''}`}
-          src={isClubIconHovered ? clubIcon2 : clubIcon}
-          alt="club Icon"
-          onMouseEnter={handleClubIconHover}
-          onMouseLeave={handleClubIconLeave}
-        />
+        <Link to="/places/library">
+          <img
+            className={`clubIcon ${isClubIconHovered ? 'hovered' : ''}`}
+            src={isClubIconHovered ? clubIcon2 : clubIcon}
+            alt="club Icon"
+            onMouseEnter={handleClubIconHover}
+            onMouseLeave={handleClubIconLeave}
+          />
+        </Link>
+        <Link to="/places/ImaginationCafe">
         <img
           className={`ProjectIcon ${isProjectIconHovered ? 'hovered' : ''}`}
           src={isProjectIconHovered ? ProjectIcon2 : ProjectIcon}
@@ -48,17 +52,18 @@ function SelectPlace() {
           onMouseEnter={handleProjectIconHover}
           onMouseLeave={handleProjectIconLeave}
         />
+        </Link>
       </div>
       <div className="SelectPlace">
         <div className={`Club ${isClubIconHovered ? 'hovered' : ''}`}>
-          <a className="PlaceKind">동아리</a>
+          <a className="PlaceKind">도서관</a>
           <br />
-          <a className="PlaceKindExp">월요일, 수요일 방과후 동아리 시간에 맞춰<br /> 동아리실을 예약하세요.</a>
+          <a className="PlaceKindExp">자유롭게 도서관 자리를 예약해<br/>아이디어 회의, 기획, 스터디 등으로 활용하세요.</a>
         </div>
         <div className={`Project ${isProjectIconHovered ? 'hovered' : ''}`}>
-          <a className="PlaceKind">프로젝트 회의</a>
+          <a className="PlaceKind">상상카페</a>
           <br />
-          <a className="PlaceKindExp">동아리 시간을 제외한 일과 시간 중 미림의<br /> 장소를 자유롭게 예약하세요.</a>
+          <a className="PlaceKindExp">자유롭게 상상카페 자리를 예약해<br/>아이디어 회의, 기획, 스터디 등으로 활용하세요.</a>
         </div>
       </div>
     </div>
