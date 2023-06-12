@@ -13,11 +13,14 @@ function PersonalPage() {
       </div>
 
       <div className="presInfo">
+        <div>
         <div className="position-date">
           <a className="presPosition">상상카페 B4</a>
           <a className="presDate">2023.04.05</a>
         </div>
           <a className="presTime">2:00~3:00</a>
+        </div>
+        <button className="cancelButton">취소하기</button>
       </div>
     </div>
   );

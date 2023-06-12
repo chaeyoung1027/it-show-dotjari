@@ -1,13 +1,9 @@
-.PersonalAll {
-    text-align: left;
-    margin-right: 14%;
-}
 .presInfo {
     position: absolute;
     width: 35%;
     height: 8.5%;
     margin-top: 1%;
-    margin-left: 11.5%;
+    margin-left: 13%;
     background: #FFFFFF;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
@@ -64,6 +60,9 @@
     height: 35px;
     left: 795px;
     top: 335px;
+    /* margin-left: 80%; */
+    display: inline-block;
+  vertical-align: middle;
     
     background: #F7F7F7;
     border: 1px solid #D1D1D1;
