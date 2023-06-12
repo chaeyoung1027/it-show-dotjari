@@ -8,6 +8,9 @@ import circleIcon from '../img/circle.png';
 import emailIcon from '../img/email.png';
 import uncheckIcon from '../img/unchecked.png';
 
+const clientId = '612256972189-4rots1sjfleh5fhfnfh3loihgrpo14iq.apps.googleusercontent.com';
+
+
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +19,27 @@ function Login() {
     console.log('Email:', email);
     console.log('Password:', password);
   }
+
+  function handleLogin() {
+    // 로그인 요청 보내기
+    fetch('login.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // 응답 데이터 처리
+        console.log(data);
+      })
+      .catch((error) => {
+        // 에러 처리
+        console.error('Error:', error);
+      });
+  }
+  
 
   return (
     <div className="container">
@@ -71,6 +95,8 @@ function Signup() {
     </div>
   );
 }
+
+
 
 ReactDOM.render(
   <Router>
