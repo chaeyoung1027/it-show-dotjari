@@ -1,0 +1,71 @@
+.PersonalAll {
+    text-align: left;
+    margin-right: 14%;
+}
+.presInfo {
+    position: absolute;
+    width: 35%;
+    height: 8.5%;
+    margin-top: 1%;
+    margin-left: 11.5%;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+.presPosition, .presTime {
+    margin-left: 3%;
+}
+.position-date {
+    display: flex;
+    justify-content: flex-start;
+}
+.presPosition {
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.presTime {
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 30px;
+  color: #9B9B9B;
+}
+
+.presDate {
+    margin-left: 20px;
+  height: 30px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #9B9B9B;
+}
+
+.cancelButton{
+    box-sizing: border-box;
+
+    width: 117px;
+    height: 35px;
+    left: 795px;
+    top: 335px;
+    
+    background: #F7F7F7;
+    border: 1px solid #D1D1D1;
+    border-radius: 20px;
+}
