@@ -1,0 +1,73 @@
+.stairs {
+    position: absolute;
+    width: 198px;
+    height: 266px;
+
+    background: #F7F7F7;
+    border-radius: 10px;
+}
+
+.room{
+    position: absolute;
+    width: 390px;
+    height: 266px;
+    
+    background: #F7F7F7;
+    border-radius: 10px;
+}
+
+.conference_room {
+    position: absolute;
+    width: 263px;
+    height: 353px;
+    
+    background: #F7F7F7;
+}
+
+.desk_top {
+    position: absolute;
+    width: 651px;
+    height: 76px;
+    
+    background: #F7F7F7;
+}
+
+.desk_center4 {
+    position: absolute;
+    width: 177px;
+    height: 177px;
+    
+    background: #F7F7F7;
+}
+
+.desk_long {
+    position: absolute;
+    width: 177px;
+    height: 766px;
+    
+    background: #F7F7F7;
+}
+
+.sofa {
+    position: absolute;
+    width: 182px;
+    height: 75px;
+    
+    background: #F7F7F7;
+}
+
+.desk_middle {
+    position: absolute;
+    width: 389px;
+    height: 164px;
+    
+    background: #F7F7F7;
+}
+
+.desk_searching {
+    position: absolute;
+    width: 398px;
+    height: 85px;
+    
+    background: #F7F7F7;
+}
