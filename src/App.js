@@ -9,8 +9,8 @@ import Library from './components/Library';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import UserInfo from './components/UserInfo';
-import SchoolMap from './components/SchoolMap';
 import PersonalPage from './components/PersonalPage';
+import LabMap from './components/LabMap';
 //img
 import Profile from './img/Profile.jpg';
 
@@ -49,7 +49,7 @@ function App() {
           <Route index element={<SelectPlace />} />
           <Route path="imaginationcafe" element={<ImaginationCafe />} />
           <Route path="library" element={<Library />} />
-          <Route path="schoolmap" element={<SchoolMap />} />
+          <Route path="schoolmap" element={<LabMap />} />
           <Route path="personalpage" element={<PersonalPage />} />
         </Route>
       </Routes>
