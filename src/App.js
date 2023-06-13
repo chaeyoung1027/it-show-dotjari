@@ -11,6 +11,9 @@ import SignUp from './components/SignUp';
 import UserInfo from './components/UserInfo';
 import PersonalPage from './components/PersonalPage';
 import LabMap from './components/LabMap';
+import ImaginationCafeMap from './components/ImaginationCafeMap';
+import LibraryMap from './components/LibraryMap';
+
 //img
 import Profile from './img/Profile.jpg';
 
@@ -37,6 +40,28 @@ function Layout() {
   );
 }
 
+function Layout2() {
+  const location = useLocation();
+  const isSchoolMap = location.pathname.includes("/places/schoolmap");
+  const isPersonalPage = location.pathname.includes("/places/personalpage");
+
+  return (
+    <div>
+      <div className='MainTopStyle'>
+        <Link to="/places" className="title">DotJari.</Link>
+        <Link to="/places/imaginationcafe" className='selectMenu'> 상상카페 </Link>
+        <Link to="/places/library" className='selectMenu'> 도서관 </Link>
+        <Link to="/places/schoolmap" className='selectMenu'> 학교 지도 </Link>  
+        <a className='Name'>3333 성이름</a>
+        <Link to="/places/personalpage">
+          <img className='profile' alt="profile" src={Profile} />
+        </Link>
+      </div>
+      <Outlet />
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -51,6 +76,12 @@ function App() {
           <Route path="library" element={<Library />} />
           <Route path="schoolmap" element={<LabMap />} />
           <Route path="personalpage" element={<PersonalPage />} />
+        </Route>
+
+        <Route path="/placesinfo" element={<Layout2 />}>
+          <Route path="imaginationcafe" element={<ImaginationCafeMap />} />
+          <Route path="library" element={<LibraryMap />} />
+          <Route path="lab" element={<LabMap />} />
         </Route>
       </Routes>
     </Router>
