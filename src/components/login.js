@@ -8,6 +8,7 @@ import Signup from './SignUp';
 import circleIcon from '../img/circle.png';
 import emailIcon from '../img/email.png';
 import uncheckIcon from '../img/unchecked.png';
+import GoogleButton from './GoogleButton';
 
 const clientId = '612256972189-4rots1sjfleh5fhfnfh3loihgrpo14iq.apps.googleusercontent.com';
 
@@ -48,37 +49,10 @@ function Login() {
       <div className="login">
         <br /><br />
         <strong>로그인</strong>
-        <br /><br />
-        <div style={{ position: 'relative', height: '40px' }}>
-          <input
-            id="btn"
-            type="email"
-            placeholder="이메일을 작성해 주세요"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
-            <input className="email-icon" type="image" src={emailIcon} alt="제출버튼" />
-          </div>
-        </div>
-        <br /><br />
-        <div style={{ position: 'relative', height: '40px' }}>
-          <input
-            id="btn"
-            type="password"
-            placeholder="비밀번호를 입력해 주세요"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
-            <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
-          </div>
-        </div>
-        <br /><br /><br />
-        <input type="checkbox" />로봇이 아닙니다.
-        <br /><br />
-        <button id="btn" onClick={handleLogin} style={{ background: '#7C00DE', color: '#fff' }}>로그인</button>
-        <br /><br />
+        <br /><br /><br /><br />
+        <GoogleButton/>
+        <br /><br /><br /><br />
+        <br /><br /><br /><br /><br/>
         <Link to="/signup">
           <button id="btn">회원가입</button>
         </Link>

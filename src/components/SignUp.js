@@ -66,6 +66,13 @@ function Login() {
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [snumber, setSnumber] = useState('');
+  const [sname, setSname] = useState('');
+
+  function handleUserInfo() {
+    console.log('Student Number:', snumber);
+    console.log('Student Name:', sname);
+  }
 
   function handleSignUp() {
     console.log('Email:', email);
@@ -103,6 +110,11 @@ function Signup() {
           <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
             <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
           </div>
+        </div>
+        <br /><br />
+        <div style={{ position: 'relative', height: '40px' }}>
+          <input id="btn" type="email" placeholder="학번 이름을 입력해주세요(ex. 1101 나미림)" value={snumber}
+            onChange={(e) => setSnumber(e.target.value)} />
         </div>
         <br /><br /><br />
         <button id="btn" onClick={handleSignUp} style={{ background: '#7C00DE', color: '#fff' }}>회원가입</button>

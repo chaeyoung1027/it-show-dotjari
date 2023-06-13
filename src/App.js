@@ -8,7 +8,6 @@ import SelectPlace from './components/SelectPlace';
 import Library from './components/Library';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import UserInfo from './components/UserInfo';
 import PersonalPage from './components/PersonalPage';
 import LabMap from './components/LabMap';
 import ImaginationCafeMap from './components/ImaginationCafeMap';
@@ -68,7 +67,6 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
-        <Route path='/userinfo' element={<UserInfo/>}/>
 
         <Route path="/places" element={<Layout />}>
           <Route index element={<SelectPlace />} />
