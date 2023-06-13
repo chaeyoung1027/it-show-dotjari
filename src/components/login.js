@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import '../css/Login.css';
-
 //img
 import circleIcon from '../img/circle.png';
 import emailIcon from '../img/email.png';
@@ -14,7 +13,6 @@ const clientId = '612256972189-4rots1sjfleh5fhfnfh3loihgrpo14iq.apps.googleuserc
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   function handleLogin() {
     console.log('Email:', email);
     console.log('Password:', password);
@@ -39,7 +37,7 @@ function Login() {
         console.error('Error:', error);
       });
   }
-  
+
 
   return (
     <div className="container">
@@ -86,7 +84,6 @@ function Login() {
     </div>
   );
 }
-
 function Signup() {
   return (
     <div>
@@ -107,6 +104,4 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
-
-
 export default Login
