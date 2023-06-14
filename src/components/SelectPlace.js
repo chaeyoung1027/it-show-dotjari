@@ -26,6 +26,10 @@ function SelectPlace() {
     setProjectIconHovered(false);
   };
 
+  const handleImageDragStart = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="SelectPlaceAll">
       <div className="sub-title">
@@ -42,6 +46,7 @@ function SelectPlace() {
             alt="club Icon"
             onMouseEnter={handleClubIconHover}
             onMouseLeave={handleClubIconLeave}
+            onDragStart={handleImageDragStart}
           />
         </Link>
         <Link to="/places/ImaginationCafe">
@@ -51,6 +56,7 @@ function SelectPlace() {
           alt="Project Icon"
           onMouseEnter={handleProjectIconHover}
           onMouseLeave={handleProjectIconLeave}
+          onDragStart={handleImageDragStart}
         />
         </Link>
       </div>
