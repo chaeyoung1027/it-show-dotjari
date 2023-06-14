@@ -1,3 +1,16 @@
+.image-container {
+    width: 70%;
+    max-width: 100%; /* 원하는 최대 너비 설정 */
+    margin: 0 12%; /* 가운데 정렬을 위해 필요한 스타일 */
+    padding-top: 3pc;
+  }
+  
+.responsive-image {
+    width: 100%;
+    height: auto;
+}
+  
+
 .stairs {
     position: absolute;
     width: 198px;

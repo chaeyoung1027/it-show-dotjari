@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import '../css/Print.css';
 
+//img
+import LibraryPrint from '../img/library.png';
+
 function LibraryMap() {
 
   return (
     <div>
-        <div className='desk_long'></div>
-
-        <div className='desk_top'></div>
-        <div className='sofa'></div>
-
-        <div className='desk_center4'></div>
-        <div className='desk_center4'></div>
-        <div className='desk_center4'></div>
-        <div className='desk_center4'></div>
-
-        <div className='desk_middle'></div>
-        <div className='desk_middle'></div>
-
-        <div className='desk_searching'></div>
+      <div className="image-container">
+      <img src={LibraryPrint} className="responsive-image" alt="Lab" />
+      </div>
     </div>
   );
 }
