@@ -58,10 +58,10 @@
 
     width: 117px;
     height: 35px;
-    left: 795px;
-    top: 335px;
-    /* margin-left: 80%; */
-    display: inline-block;
+    left: 525px;
+    top: 20px;
+    
+    position: absolute;
   vertical-align: middle;
     
     background: #F7F7F7;
