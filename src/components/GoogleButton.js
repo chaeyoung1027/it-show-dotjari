@@ -6,6 +6,7 @@ const clientId =
 '612256972189-4rots1sjfleh5fhfnfh3loihgrpo14iq.apps.googleusercontent.com';
 
 const GoogleButton = ({ onSocial }) => {
+
     useEffect(() => {
         function start() {
             gapi.client.init({

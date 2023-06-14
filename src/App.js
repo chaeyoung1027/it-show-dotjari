@@ -12,6 +12,7 @@ import PersonalPage from './components/PersonalPage';
 import LabMap from './components/LabMap';
 import ImaginationCafeMap from './components/ImaginationCafeMap';
 import LibraryMap from './components/LibraryMap';
+import SchoolMap from './components/SchoolMap';
 
 //img
 import Profile from './img/Profile.jpg';
@@ -72,7 +73,7 @@ function App() {
           <Route index element={<SelectPlace />} />
           <Route path="imaginationcafe" element={<ImaginationCafe />} />
           <Route path="library" element={<Library />} />
-          <Route path="schoolmap" element={<LabMap />} />
+          <Route path="schoolmap" element={<SchoolMap />} />
           <Route path="personalpage" element={<PersonalPage />} />
         </Route>
 
