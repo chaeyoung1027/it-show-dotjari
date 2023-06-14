@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/Print.css';
 
 //img
-import Lab from '../img/lab.png';
+import LabPrint from '../img/lab.png';
 
 function PrintLab() {
-
   return (
-    
-    <div>
-        <img src={Lab} />
+    <div className="image-container">
+      <img src={LabPrint} className="responsive-image" alt="Lab" />
     </div>
   );
 }
