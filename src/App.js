@@ -16,6 +16,7 @@ import SchoolMap from './components/SchoolMap';
 
 //img
 import Profile from './img/Profile.jpg';
+import GoogleButton from './components/GoogleButton';
 
 function Layout() {
   const location = useLocation();
