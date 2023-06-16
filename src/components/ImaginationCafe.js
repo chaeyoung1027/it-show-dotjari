@@ -15,14 +15,9 @@ function ImaginationCafe() {
       setSelectedSeats([...SelectedSeats, seat]);
     }
   };
-
+  const seatNames = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3'];
   const seatsData = [
-    ['A1', 'A2', 'A3', 'B1', 'B2', 'B3'],
-    ['A4', 'A5', 'A6', 'B4', 'B5', 'B6'],
-    ['C1', 'C2', 'D1', 'D2'],
-    ['C3', 'C4', 'D3', 'D4'],
-    ['E1', 'E2', 'F1', 'F2'],
-    ['E3', 'E4', 'F3', 'F4'],
+    {x:0, y : 0, width : 500, height : 500}
   ];
 
   return (
@@ -35,7 +30,15 @@ function ImaginationCafe() {
       </div>
       <SelectDate />
 
-      <div className="cafe-seats-container">
+      <div className='cafe-seats-container'>
+        {
+          seatsData.map((s, idx) =>{
+            <div className='seats'>{idx}</div>
+          })
+        }
+      </div>
+
+      {/* <div className="cafe-seats-container">
         {seatsData.map((row, rowIndex) => (
           <div key={rowIndex}>
             {row.map((seat, seatIndex) => (
@@ -48,7 +51,7 @@ function ImaginationCafe() {
             ))}
           </div>
         ))}
-      </div>
+      </div> */}
 
       <BottomInfo/>
     </div>

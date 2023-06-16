@@ -17,19 +17,6 @@
   width: 5%;  /*좌석 간 거리 조절 가능*/
   align-items: center;
 }
-/* 각 좌석에 대한 스타일 */
-.seat {
-  width: 50px;
-  height: 50px;
-  border-radius: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  cursor: pointer;
-  background: #f7f7f7;
-  font-weight: bold;
-}
 .available {
   /* 예약 가능한 좌석 */
   border: 2px solid #dddddd;
@@ -47,4 +34,23 @@
 .ImaginationCafeAll{
   width: 70%;
   margin-left: 4%;
+}
+
+/* 각 좌석에 대한 스타일 */
+.seats{
+  color: black;
+  position: absolute;
+  left : x;
+  top : y;
+  width : 50px;
+  height: 50px;
+  background :#a5a5a5;
+  border-radius: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+  background: #f7f7f7;
+  font-weight: bold;
 }
