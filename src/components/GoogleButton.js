@@ -1,100 +1,59 @@
-import React, { useCallback, useEffect, useState } from "react";
-import GoogleLogin from 'react-google-login';
+import React, { useCallback, useState } from "react";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 import { useNavigate } from 'react-router-dom';
-import { gapi }  from 'gapi-script';
 
-const clientId = '612256972189-4rots1sjfleh5fhfnfh3loihgrpo14iq.apps.googleusercontent.com';
-
-const GoogleButton = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        function start() {
-            gapi.client.init({
-                clientId,
-                scope: 'email',
-            });
-        }
-
-        gapi.load('client:auth2', start);
-    }, []);
-
-    const onSuccess = useCallback((response) => {
-        console.log(response);
-        setIsLoggedIn(true);
-        navigate("/places");
-    }, [navigate]);
-
-    const onFailure = useCallback((response) => {
-        console.log(response);
-    }, []);
-
-    return (
-        <div>
-            {isLoggedIn ? (
-                <div>Redirecting...</div>
-            ) : (
-                <GoogleLogin
-                    clientId={clientId}
-                    buttonText="구글아이디로 로그인하기"
-                    onSuccess={onSuccess}
-                    onFailure={onFailure}
-                />
-            )}
-        </div>
-    );
+// Firebase 초기화 설정
+const firebaseConfig = {
+    // Firebase 구성 정보 입력
+      apiKey: "AIzaSyDLpT910n8p3nuPsg-Qe9juh_lWa7UM8dY",
+      authDomain: "dotjari.firebaseapp.com",
+      projectId: "dotjari",
+      storageBucket: "dotjari.appspot.com",
+      messagingSenderId: "612256972189",
+      appId: "1:612256972189:web:b1282ada3d5e6f02348374",
+      measurementId: "G-JNP934S6LJ"
 };
 
-export default GoogleButton;
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
+const EmailPasswordLogin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
-// import React, { useCallback, useEffect, useState } from "react";
-// import GoogleLogin from 'react-google-login';
-// import { gapi }  from 'gapi-script';
-// import { Link } from 'react-router-dom';
+  const handleLogin = useCallback(async () => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      navigate('/places');
+    } catch (error) {
+      setError(error.message);
+    }
+  }, [email, password, navigate]);
 
-// const clientId = '612256972189-4rots1sjfleh5fhfnfh3loihgrpo14iq.apps.googleusercontent.com';
+  return (
+    <div>
+      <h2>Email and Password Login</h2>
+      <div>
+        <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
+      </div>
+      <div>
+        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+      </div>
+      <button onClick={handleLogin}>Log In</button>
+      {error && <div>{error}</div>}
+    </div>
+  );
+};
 
-// const GoogleButton = () => {
-//     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-//     useEffect(() => {
-//         function start() {
-//             gapi.client.init({
-//                 clientId,
-//                 scope:'email',
-//             });
-//         }
-        
-//         gapi.load('client:auth2', start);
-//     }, []);
-
-//     const onSuccess = useCallback((response) => {
-//         console.log(response);
-//         setIsLoggedIn(true);
-//     }, []);
-
-//     const onFailure = useCallback((response) => {
-//         console.log(response);
-//     }, []);
-
-//     return (
-//         <div>
-//             {isLoggedIn ? (
-//                 <Link to="/places"></Link>
-//             ) : (
-//                 <GoogleLogin
-//                     clientId={clientId}
-//                     buttonText="구글아이디로 로그인하기"
-//                     onSuccess={onSuccess}
-//                     onFailure={onFailure}
-//                 />
-//             )}
-//         </div>
-//     );
-// };
-
-// export default GoogleButton;
+export default EmailPasswordLogin;
