@@ -2,6 +2,11 @@ import React, { useCallback, useState } from "react";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { useNavigate } from 'react-router-dom';
+import '../css/Login.css';
+
+//img
+import emailIcon from '../img/email.png';
+import uncheckIcon from '../img/unchecked.png';
 
 // Firebase 초기화 설정
 const firebaseConfig = {
@@ -43,14 +48,33 @@ const EmailPasswordLogin = () => {
 
   return (
     <div>
-      <h2>Email and Password Login</h2>
-      <div>
-        <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
-      </div>
-      <div>
-        <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-      </div>
-      <button onClick={handleLogin}>Log In</button>
+      <div style={{ position: 'relative', height: '40px' }}>
+          <input
+            id="btn"
+            type="email"
+            placeholder="이메일을 작성해 주세요"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
+            <input className="email-icon" type="image" src={emailIcon} alt="제출버튼" />
+          </div>
+        </div>
+        <br /><br />
+        <div style={{ position: 'relative', height: '40px' }}>
+          <input
+            id="btn"
+            type="password"
+            placeholder="비밀번호를 입력해 주세요"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
+            <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
+          </div>
+        </div>
+        <br></br><br></br><br></br>
+          <button id="btn" onClick={handleLogin} style={{ backgroundColor: "#7C00DE", color: "white" }}>로그인</button>
       {error && <div>{error}</div>}
     </div>
   );
