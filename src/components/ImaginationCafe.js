@@ -80,11 +80,11 @@ function ImaginationCafe() {
               const seatName = seatNames[idx];
               const isSeatSelected = SelectedSeats.includes(seatName);
               const isSeatAvailable = !isSeatSelected;
-              const seatClassName = `Lseat ${isSeatSelected ? "selected" : isSeatAvailable ? "available" : ""}`;
+              const seatClassName = `Iseat ${isSeatSelected ? "selected" : isSeatAvailable ? "available" : ""}`;
               if(seatName!==' '){
                 return <div 
                 className={seatClassName}
-                style={{ position: "absolute", left: s.x, top: s.y, width : s.width, height : s.height}}
+                style={{ position: "absolute", left: s.x, top: s.y}}
                 onClick={() =>handleSeatClick(s)}
                 seleted={SelectedSeats.includes(seatNames[idx])}>
                   {seatNames[idx]}</div>
