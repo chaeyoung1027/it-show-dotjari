@@ -22,6 +22,12 @@
   background: #f7f7f7;
   font-weight: bold;
 }
+.table{
+  margin-top: 20%;
+  margin-left: 40%;
+  background: #F7F7F7;
+  border-radius: 10px;
+}
 .available {
   /* 예약 가능한 좌석 */
   border: 2px solid #dddddd;

@@ -17,7 +17,7 @@ function ImaginationCafe() {
     }
   };
   
-  const seatNames = ['A1', 'A2', 'A3', 'A4','A5','A6', 'B1', 'B2', 'B3','B4','B5','B6', 'C1','C2','C3','C4','D1','D2','D3','D4','E1','E2','E3','E4','F1','F2','F3','F4'];
+  const seatNames = ['A1', 'A2', 'A3', 'A4','A5','A6', 'B1', 'B2', 'B3','B4','B5','B6', 'C1','C2','C3','C4','D1','D2','D3','D4','E1','E2','E3','E4','F1','F2','F3','F4', ' ', ' ', ' ', ' ', ' ', ' ',];
   const seatsData = [
     //A
     {x: 0, y: 0},
@@ -53,6 +53,14 @@ function ImaginationCafe() {
     {x: 890, y: 245},
     {x: 700, y: 310},
     {x: 890, y: 310},
+    //테이블
+    {x: 70, y: 5, width : 105, height : 175},
+    {x: 70, y: 250, width : 105, height : 175},
+    {x: 420, y: 68, width : 105, height : 110},
+    {x: 420, y: 250, width : 105, height : 110},
+    {x: 770, y: 68, width : 105, height : 110},
+    {x: 770, y: 250, width : 105, height : 110},
+
   ];
 
   const screenSize = { width: 500, height: 600 }    //나중에 조절하기 margin같은거
@@ -73,12 +81,21 @@ function ImaginationCafe() {
               const isSeatSelected = SelectedSeats.includes(seatName);
               const isSeatAvailable = !isSeatSelected;
               const seatClassName = `Lseat ${isSeatSelected ? "selected" : isSeatAvailable ? "available" : ""}`;
+              if(seatName!==' '){
                 return <div 
                 className={seatClassName}
-                style={{ position: "absolute", left: s.x, top: s.y}}
+                style={{ position: "absolute", left: s.x, top: s.y, width : s.width, height : s.height}}
                 onClick={() =>handleSeatClick(s)}
                 seleted={SelectedSeats.includes(seatNames[idx])}>
                   {seatNames[idx]}</div>
+              }
+              else{
+                return <div
+                style={{position : "absolute", left : s.x, top : s.y, width : s.width, height : s.height}}
+                className='table'
+                >
+                </div>
+              }
             })
         }
     </div>
