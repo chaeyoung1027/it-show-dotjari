@@ -7,15 +7,20 @@
   color: #a5a5a5;
   font-weight: 100;
 }
-/* 좌석을 위한 그리드 레이아웃 정의 */
-.cafe-seats-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 170%;
-  margin-left: 13%;
-  margin-top: 3%;
-  width: 5%;  /*좌석 간 거리 조절 가능*/
+/* 각 좌석에 대한 스타일 */
+.Lseat {
+  margin-top:20%;
+  margin-left: 40%;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  border-radius: 15%;
+  cursor: pointer;
+  background: #f7f7f7;
+  font-weight: bold;
 }
 .available {
   /* 예약 가능한 좌석 */
@@ -25,32 +30,8 @@
 .selected {
   border: 2px solid #7c00de;
 }
-.seats-container {
-  margin-left: 15%;
-  display: flex;
-  gap: 10px;  /*좌석 사이 조절*/
-}
 
 .ImaginationCafeAll{
   width: 70%;
   margin-left: 4%;
-}
-
-/* 각 좌석에 대한 스타일 */
-.seats{
-  color: black;
-  position: absolute;
-  left : x;
-  top : y;
-  width : 50px;
-  height: 50px;
-  background :#a5a5a5;
-  border-radius: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  cursor: pointer;
-  background: #f7f7f7;
-  font-weight: bold;
 }

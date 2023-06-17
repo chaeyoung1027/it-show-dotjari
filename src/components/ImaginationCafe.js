@@ -9,17 +9,53 @@ function ImaginationCafe() {
   const [SelectedSeats, setSelectedSeats] = useState([]);
 
   const handleSeatClick = (seat) => {
-    if (SelectedSeats.includes(seat)) {
-      setSelectedSeats(SelectedSeats.filter((SelectedSeats) => SelectedSeats !== seat));
+    const seatName = seatNames[seatsData.indexOf(seat)];
+    if (SelectedSeats.includes(seatName)) {
+      setSelectedSeats(SelectedSeats.filter((selectedSeat) => selectedSeat !== seatName));
     } else {
-      setSelectedSeats([...SelectedSeats, seat]);
+      setSelectedSeats([...SelectedSeats, seatName]);
     }
   };
-  const seatNames = ['A1', 'A2', 'A3', 'B1', 'B2', 'B3'];
+  
+  const seatNames = ['A1', 'A2', 'A3', 'A4','A5','A6', 'B1', 'B2', 'B3','B4','B5','B6', 'C1','C2','C3','C4','D1','D2','D3','D4','E1','E2','E3','E4','F1','F2','F3','F4'];
   const seatsData = [
-    {x:0, y : 0, width : 500, height : 500}
+    //A
+    {x: 0, y: 0},
+    {x: 190, y: 0},
+    {x: 0, y: 65},
+    {x: 190, y: 65},
+    {x: 0, y: 130},
+    {x: 190, y: 130},
+    //B
+    {x: 0, y: 245},
+    {x: 190, y: 245},
+    {x: 0, y: 310},
+    {x: 190, y: 310},
+    {x: 0, y: 375},
+    {x: 190, y: 375},
+    //C
+    {x: 350, y: 65},
+    {x: 540, y: 65},
+    {x: 350, y: 130},
+    {x: 540, y: 130},
+    //D
+    {x: 350, y: 245},
+    {x: 540, y: 245},
+    {x: 350, y: 310},
+    {x: 540, y: 310},
+    //E
+    {x: 700, y: 65},
+    {x: 890, y: 65},
+    {x: 700, y: 130},
+    {x: 890, y: 130},
+    //F
+    {x: 700, y: 245},
+    {x: 890, y: 245},
+    {x: 700, y: 310},
+    {x: 890, y: 310},
   ];
 
+  const screenSize = { width: 500, height: 600 }    //나중에 조절하기 margin같은거
   return (
     <div className='ImaginationCafeAll'>
       <div className="sub-title">
@@ -30,29 +66,22 @@ function ImaginationCafe() {
       </div>
       <SelectDate />
 
-      <div className='cafe-seats-container'>
+      <div style={ {width: screenSize.width, height: screenSize.height, position: "relative" } }>
         {
-          seatsData.map((s, idx) =>{
-            <div className='seats'>{idx}</div>
-          })
+            seatsData.map((s, idx) => {
+              const seatName = seatNames[idx];
+              const isSeatSelected = SelectedSeats.includes(seatName);
+              const isSeatAvailable = !isSeatSelected;
+              const seatClassName = `Lseat ${isSeatSelected ? "selected" : isSeatAvailable ? "available" : ""}`;
+                return <div 
+                className={seatClassName}
+                style={{ position: "absolute", left: s.x, top: s.y}}
+                onClick={() =>handleSeatClick(s)}
+                seleted={SelectedSeats.includes(seatNames[idx])}>
+                  {seatNames[idx]}</div>
+            })
         }
-      </div>
-
-      {/* <div className="cafe-seats-container">
-        {seatsData.map((row, rowIndex) => (
-          <div key={rowIndex}>
-            {row.map((seat, seatIndex) => (
-              <Seat
-                key={seat}
-                onClick={() => handleSeatClick(seat)}
-                selected={SelectedSeats.includes(seat)}
-                seatName={seat}
-              />
-            ))}
-          </div>
-        ))}
-      </div> */}
-
+    </div>
       <BottomInfo/>
     </div>
   );
