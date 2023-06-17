@@ -73,7 +73,7 @@ const EmailPasswordLogin = () => {
             <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
           </div>
         </div>
-        <br></br><br></br><br></br>
+        <br></br><br></br><br></br><br></br>
           <button id="btn" onClick={handleLogin} style={{ backgroundColor: "#7C00DE", color: "white" }}>로그인</button>
       {error && <div>{error}</div>}
     </div>

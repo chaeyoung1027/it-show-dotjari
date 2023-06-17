@@ -49,10 +49,9 @@ function Login() {
       <div className="login">
         <br /><br />
         <strong>로그인</strong>
-        <br /><br /><br /><br />
+        <br /><br /><br />
         <GoogleButton/>
-        <br /><br /><br /><br />
-        <br /><br /><br /><br /><br/>
+        <br />
         <Link to="/signup">
           <button id="btn">회원가입</button>
         </Link>
