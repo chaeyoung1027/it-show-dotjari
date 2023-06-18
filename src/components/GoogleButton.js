@@ -37,9 +37,11 @@ const EmailPasswordLogin = () => {
     setPassword(e.target.value);
   };
 
+  // 이메일, 비밀번호 확인
   const handleLogin = useCallback(async () => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
+      console.log('Logged in with:', email,", "+password);
       navigate('/places');
     } catch (error) {
       setError(error.message);

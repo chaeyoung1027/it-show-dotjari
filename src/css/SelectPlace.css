@@ -10,7 +10,8 @@
   }
   
   .clubIcon,
-  .ProjectIcon {
+  .ProjectIcon,
+  .PracIcon {
     width: 13%;
     margin-top: 5%;
     border: 2px solid #e1c7f5;
@@ -27,9 +28,14 @@
   .ProjectIcon {
     margin-left: 6%;
   }
+
+  .PracIcon {
+    margin-left: 6%;
+  }
   
   .clubIcon,
-  .ProjectIcon {
+  .ProjectIcon,
+  .PracIcon {
     width: 11%;
     margin-top: 5%;
     border: 2px solid #e1c7f5;
@@ -41,7 +47,8 @@
   }
   
   .clubIcon.hovered,
-  .ProjectIcon.hovered {
+  .ProjectIcon.hovered,
+  .PracIcon.hovered {
     border-color: #b250fe;
     box-shadow: 2px 2px 8px #b250fe;
   }
@@ -57,11 +64,18 @@
   .Project {
     margin-left: 13.5%;
   }
+
+  .Prac {
+    margin-left: 13.5%;
+  }
   
   .Club.hovered .PlaceKind,
   .Project.hovered .PlaceKind,
+  .Prac.hovered.PlaceKind,
   .Club.hovered .PlaceKindExp,
-  .Project.hovered .PlaceKindExp {
+  .Project.hovered .PlaceKind,
+  .Prac.hovered.PlaceKindExp
+   {
     color: #4f008d;
   }
   
