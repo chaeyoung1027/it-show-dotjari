@@ -1,8 +1,42 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link, Navigate, Outlet } from 'react-router-dom';
-import '../css/PersonalPage.css'
+import { useNavigate } from 'react-router-dom';
+import '../css/PersonalPage.css';
+
+import { getAuth, signOut, deleteUser } from 'firebase/auth';
 
 function PersonalPage() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // 로그아웃 성공 시 로그인 페이지로 이동
+        navigate('/login');
+      })
+      .catch((error) => {
+        // 로그아웃 실패 시 에러 처리
+        console.error("로그아웃 오류:", error);
+      });
+  };
+
+  const handleDeleteAccount = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+      deleteUser(user)
+        .then(() => {
+          // 계정 탈퇴 성공 시 로그인 페이지로 이동 또는 다른 처리
+          navigate('/login');
+        })
+        .catch((error) => {
+          // 계정 탈퇴 실패 시 에러 처리
+          console.error("계정 탈퇴 오류:", error);
+        });
+    }
+  };
+
   return (
     <div className="PersonalAll">
       <div className="sub-title">
@@ -14,20 +48,19 @@ function PersonalPage() {
 
       <div className="presInfo">
         <div>
-        <div className="position-date">
-          <a className="presPosition">상상카페 B4</a>
-          <a className="presDate">2023.04.05</a>
-        </div>
+          <div className="position-date">
+            <a className="presPosition">상상카페 B4</a>
+            <a className="presDate">2023.04.05</a>
+          </div>
           <a className="presTime">2:00~3:00</a>
         </div>
         <button className="cancelButton">취소하기</button>
       </div>
 
       <div className="AccountSetting">
-        <div className="Logout">로그아웃</div>
-        <div className="delete">계정 탈퇴하기</div>
+        <div className="Logout" onClick={handleLogout}>로그아웃</div>
+        <div className="delete" onClick={handleDeleteAccount}>계정 탈퇴하기</div>
       </div>
-
     </div>
   );
 }
