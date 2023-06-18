@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/SelectPlace.css';
+
+// img
 import clubIcon from '../img/club.png';
 import clubIcon2 from '../img/club2.png';
 import ProjectIcon from '../img/project.png';
