@@ -22,6 +22,12 @@ function PersonalPage() {
         </div>
         <button className="cancelButton">취소하기</button>
       </div>
+
+      <div className="AccountSetting">
+        <div className="Logout">로그아웃</div>
+        <div className="delete">계정 탈퇴하기</div>
+      </div>
+
     </div>
   );
 }

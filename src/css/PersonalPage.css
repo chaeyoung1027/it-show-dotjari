@@ -16,7 +16,27 @@
     flex-direction: column;
     justify-content: center;
   }
-  
+.AccountSetting{
+  position: absolute;
+  width: 576px;
+  height: 125px;
+  margin-top: 30%;
+  margin-left: 13%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
+  font-size: 24px;
+  font : Inter;
+
+}
+
+.Logout{
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.delete{
+  margin-top: 18px;
+  margin-left: 50px;
+}  
 .presPosition, .presTime {
     margin-left: 3%;
 }
