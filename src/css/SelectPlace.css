@@ -9,18 +9,6 @@
     font-weight: 100;
   }
   
-  .clubIcon,
-  .ProjectIcon,
-  .PracIcon {
-    width: 13%;
-    margin-top: 5%;
-    border: 2px solid #e1c7f5;
-    box-shadow: 2px 2px 8px #e1c7f5;
-    border-radius: 20px;
-    padding: 8%;
-    padding-top: 9%;
-  }
-  
   .clubIcon {
     margin-left: 13%;
   }
@@ -36,7 +24,7 @@
   .clubIcon,
   .ProjectIcon,
   .PracIcon {
-    width: 11%;
+    width: 8%;
     margin-top: 5%;
     border: 2px solid #e1c7f5;
     box-shadow: 2px 2px 8px #e1c7f5;
@@ -58,23 +46,23 @@
   }
   
   .Club {
-    margin-left: 14%;
+    margin-left: 12%;
   }
   
   .Project {
-    margin-left: 13.5%;
+    margin-left: 1%;
   }
 
   .Prac {
-    margin-left: 13.5%;
+    margin-left: 8%;
   }
   
   .Club.hovered .PlaceKind,
   .Project.hovered .PlaceKind,
-  .Prac.hovered.PlaceKind,
+  .Prac.hovered .PlaceKind,
   .Club.hovered .PlaceKindExp,
   .Project.hovered .PlaceKind,
-  .Prac.hovered.PlaceKindExp
+  .Prac.hovered .PlaceKindExp
    {
     color: #4f008d;
   }
