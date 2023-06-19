@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route, Routes, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify'; // 추가
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../css/Login.css';
 import Signup from './SignUp';
 
 import circleIcon from '../img/circle.png';
-import emailIcon from '../img/email.png'; // 추가
-import uncheckIcon from '../img/unchecked.png'; // 추가
+import emailIcon from '../img/email.png';
+import uncheckIcon from '../img/unchecked.png';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -16,13 +16,13 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 // Firebase 초기화 설정
 const firebaseConfig = {
   // Firebase 구성 정보 입력
-    apiKey: "AIzaSyDLpT910n8p3nuPsg-Qe9juh_lWa7UM8dY",
-    authDomain: "dotjari.firebaseapp.com",
-    projectId: "dotjari",
-    storageBucket: "dotjari.appspot.com",
-    messagingSenderId: "612256972189",
-    appId: "1:612256972189:web:b1282ada3d5e6f02348374",
-    measurementId: "G-JNP934S6LJ"
+  apiKey: "AIzaSyDLpT910n8p3nuPsg-Qe9juh_lWa7UM8dY",
+  authDomain: "dotjari.firebaseapp.com",
+  projectId: "dotjari",
+  storageBucket: "dotjari.appspot.com",
+  messagingSenderId: "612256972189",
+  appId: "1:612256972189:web:b1282ada3d5e6f02348374",
+  measurementId: "G-JNP934S6LJ"
 };
 
 initializeApp(firebaseConfig);
@@ -41,7 +41,7 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = async () => { // 수정
+  const handleLogin = async () => {
     try {
       if (!email || !password) {
         toast.error('이메일과 비밀번호를 입력해 주세요.');
@@ -54,17 +54,11 @@ function Login() {
       console.log('Email:', email);
       console.log('Password:', password);
 
-      toast.success('로그인에 성공했습니다.'); // 추가
+      toast.success('로그인에 성공했습니다.');
       navigate('/places');
     } catch (error) {
-      setError(error.message);
-      toast.error('로그인에 실패했습니다.'); // 추가
+      toast.error('로그인에 실패했습니다.');
     }
-  }
-
-  function validateEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
   }
 
   return (
@@ -108,6 +102,7 @@ function Login() {
         </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
+      <ToastContainer /> {/* 토스트 컨테이너를 추가 */}
     </div>
   );
 }

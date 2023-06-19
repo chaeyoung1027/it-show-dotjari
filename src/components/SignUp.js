@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
@@ -22,12 +21,12 @@ function Signup() {
   async function handleSignUp() {
     try {
       if (!validateEmail(email)) {
-        toast.error('유효한 이메일을 입력해 주세요.'); // 토스트 에러 메시지를 표시합니다.
+        toast.error('유효한 이메일을 입력해 주세요.');
         return;
       }
 
       if (password.length < 6) {
-        toast.error('비밀번호는 최소 6자 이상이어야 합니다.'); // 토스트 에러 메시지를 표시합니다.
+        toast.error('비밀번호는 최소 6자 이상이어야 합니다.');
         return;
       }
 
@@ -69,7 +68,7 @@ function Signup() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
-            <input className="email-icon" type="image" src={emailIcon} alt="제출버튼" />
+            <img className="email-icon" src={emailIcon} alt="제출버튼" />
           </div>
         </div>
         {error && <p className="error">{error}</p>}
@@ -83,7 +82,7 @@ function Signup() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div style={{ position: 'relative', left: '33%', bottom: '40px' }}>
-            <input className="check-icon" type="image" src={uncheckIcon} alt="제출버튼" />
+            <img className="check-icon" src={uncheckIcon} alt="제출버튼" />
           </div>
         </div>
         <br /><br />
@@ -91,6 +90,7 @@ function Signup() {
         <button id="btn" onClick={handleSignUp} style={{ background: '#7C00DE', color: '#fff' }}>회원가입</button>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
+      <ToastContainer /> {/* 토스트 컨테이너를 추가 */}
     </div>
   );
 }
