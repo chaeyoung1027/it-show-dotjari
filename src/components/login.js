@@ -43,8 +43,19 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      if (!email || !password) {
-        toast.error('이메일과 비밀번호를 입력해 주세요.');
+
+      if(!validateEmail(email) && password.length<6) {
+        toast.error('이메일과 비밀번호를 입력해주세요.');
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        toast.error('유효한 이메일을 입력해 주세요.');
+        return;
+      }
+
+      if (password.length < 6) {
+        toast.error('비밀번호는 최소 6자 이상이어야 합니다.');
         return;
       }
 
@@ -53,12 +64,16 @@ function Login() {
 
       console.log('Email:', email);
       console.log('Password:', password);
-
-      toast.success('로그인에 성공했습니다.');
+      
       navigate('/places');
     } catch (error) {
       toast.error('로그인에 실패했습니다.');
     }
+  }
+
+  function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   }
 
   return (
@@ -102,7 +117,7 @@ function Login() {
         </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
-      <ToastContainer /> {/* 토스트 컨테이너를 추가 */}
+      <ToastContainer autoClose={2000}/> {/* 토스트 컨테이너 추가 */}
     </div>
   );
 }

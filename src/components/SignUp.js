@@ -20,6 +20,12 @@ function Signup() {
 
   async function handleSignUp() {
     try {
+
+      if(!validateEmail(email) && password.length<6) {
+        toast.error('이메일과 비밀번호를 입력해주세요.');
+        return;
+      }
+
       if (!validateEmail(email)) {
         toast.error('유효한 이메일을 입력해 주세요.');
         return;
@@ -90,7 +96,7 @@ function Signup() {
         <button id="btn" onClick={handleSignUp} style={{ background: '#7C00DE', color: '#fff' }}>회원가입</button>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
-      <ToastContainer /> {/* 토스트 컨테이너를 추가 */}
+      <ToastContainer autoClose={2000}/>
     </div>
   );
 }
