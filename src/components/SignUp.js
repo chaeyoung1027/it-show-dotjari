@@ -1,46 +1,57 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import 'firebase/compat/database'; // Realtime Database를 사용하기 위해 추가
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import 'firebase/compat/database';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../css/Login.css';
 
-//img
 import circleIcon from '../img/circle.png';
 import emailIcon from '../img/email.png';
 import uncheckIcon from '../img/unchecked.png';
 
 function Signup() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [snumber, setSnumber] = useState('');
-  const [sname, setSname] = useState('');
+  const [error, setError] = useState('');
 
   async function handleSignUp() {
     try {
-      // 비밀번호의 길이가 최소 6자 이상인지 확인
-      if (password.length < 6) {
-        console.log('비밀번호는 최소 6자 이상이어야 합니다.');
+      if (!validateEmail(email)) {
+        toast.error('유효한 이메일을 입력해 주세요.'); // 토스트 에러 메시지를 표시합니다.
         return;
       }
-  
-      // Firebase 회원가입 처리
+
+      if (password.length < 6) {
+        toast.error('비밀번호는 최소 6자 이상이어야 합니다.'); // 토스트 에러 메시지를 표시합니다.
+        return;
+      }
+
       await firebase.auth().createUserWithEmailAndPassword(email, password);
-  
-      // 이메일과 비밀번호를 Realtime Database에 저장
+
       await firebase.database().ref('users').push({
         email,
         password
       });
-  
+
       console.log('Email:', email);
       console.log('Password:', password);
+
+      navigate('/login');
     } catch (error) {
       console.log(error);
+      toast.error('회원가입에 실패했습니다.');
     }
   }
-  
+
+  function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
 
   return (
     <div className="container">
@@ -61,6 +72,7 @@ function Signup() {
             <input className="email-icon" type="image" src={emailIcon} alt="제출버튼" />
           </div>
         </div>
+        {error && <p className="error">{error}</p>}
         <br /><br />
         <div style={{ position: 'relative', height: '40px' }}>
           <input
@@ -75,14 +87,8 @@ function Signup() {
           </div>
         </div>
         <br /><br />
-        {/* <div style={{ position: 'relative', height: '40px' }}>
-          <input id="btn" type="email" placeholder="학번 이름을 입력해주세요(ex. 1101 나미림)" value={snumber}
-            onChange={(e) => setSnumber(e.target.value)} />
-        </div> */}
         <br /><br />
-        <Link to="/login">
         <button id="btn" onClick={handleSignUp} style={{ background: '#7C00DE', color: '#fff' }}>회원가입</button>
-        </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
     </div>
@@ -94,6 +100,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/signup" element={<Signup />} />
     </Routes>
+    <ToastContainer />
   </Router>,
   document.getElementById('root')
 );
