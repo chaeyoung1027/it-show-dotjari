@@ -79,6 +79,13 @@ function Library() {
 
   ];
 
+  const handleReservation = () =>{
+    const reservationData={
+      selectedSeats:SelectedSeats
+    }
+    return reservationData
+  }
+
   const screenSize = { width: 500, height: 600 }    //나중에 조절하기 margin같은거
   return (
     <div className='LibraryAll'>
@@ -116,7 +123,7 @@ function Library() {
         }
     </div>
 
-      <BottomInfo />
+      <BottomInfo onReservation={handleReservation} currentComponent="Library"/>
     </div>
   );
 }

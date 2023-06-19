@@ -43,4 +43,5 @@
   border: 1px solid #D1D1D1;
   border-radius: 20px;
   margin-left: 58%; /* 버튼과 링크 사이의 간격을 위한 마진 추가 */
+  cursor: pointer;
 }

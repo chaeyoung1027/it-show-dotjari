@@ -62,6 +62,13 @@ function ImaginationCafe() {
     {x: 770, y: 250, width : 105, height : 110},
 
   ];
+  
+  const handleReservation = () =>{
+    const reservationData={
+      selectedSeats:SelectedSeats
+    }
+    return reservationData
+  }
 
   const screenSize = { width: 500, height: 600 }    //나중에 조절하기 margin같은거
   return (
@@ -99,7 +106,7 @@ function ImaginationCafe() {
             })
         }
     </div>
-      <BottomInfo/>
+      <BottomInfo onReservation={handleReservation} currentComponent="ImaginationCafe"/>
     </div>
   );
 }

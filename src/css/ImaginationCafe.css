@@ -41,3 +41,7 @@
   width: 70%;
   margin-left: 4%;
 }
+.reservation-button{
+  cursor: pointer;
+  background-color: #7c00de;
+}

@@ -40,7 +40,7 @@ function Layout() {
         <Link to="/places/imaginationcafe" className='selectMenu'> 상상카페 </Link>
         <Link to="/places/library" className='selectMenu'> 도서관 </Link>
         <Link to="/places/schoolmap" className='selectMenu'> 학교 지도 </Link>  
-        <a className='Name'>{email}</a>
+        <a className='Name'>{email?email:'로그인해주세요'}</a>
         <Link to="/places/personalpage">
           <img className='profile' alt="profile" src={Profile} />
         </Link>
