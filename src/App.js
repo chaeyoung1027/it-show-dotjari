@@ -16,7 +16,6 @@ import Floor4Map from './components/Floor4Map';
 
 //img
 import Profile from './img/Profile.jpg';
-import GoogleButton from './components/GoogleButton';
 
 function Layout() {
   const location = useLocation();
