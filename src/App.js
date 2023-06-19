@@ -17,8 +17,6 @@ import {auth} from './firebase'
 
 //img
 import Profile from './img/Profile.jpg';
-import GoogleButton from './components/GoogleButton';
-import { onAuthStateChanged } from 'firebase/auth';
 
 function Layout() {
   const location = useLocation();
