@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../css/SelectDate.css'
+import { MyContext } from '../App';
 
 function SelectDate() {
-    const [selectedDay, setSelectedDay] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
-    const [selectedMinute, setSelectedMinute] = useState('');
-    const [selectedTime2, setSelectedTime2] = useState('');
-    const [selectedMinute2, setSelectedMinute2] = useState('');
+     const {
+    selectedDay,
+    setSelectedDay,
+    selectedTime,
+    setSelectedTime,
+    selectedMinute,
+    setSelectedMinute,
+    selectedTime2,
+    setSelectedTime2,
+    selectedMinute2,
+    setSelectedMinute2
+  } = useContext(MyContext);
   
     const getToday = () => {
       const today = new Date();
