@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getAuth, signOut, deleteUser } from 'firebase/auth';
 import { getDatabase, ref, remove, get } from "firebase/database";
+import { MyContext } from '../App';
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import '../css/PersonalPage.css';
 
@@ -11,7 +12,9 @@ function PersonalPage({ userEmail }) {
   const [loading, setLoading] = useState(true);
 
   const location = useLocation();
-  const email = location?.state?.email;
+  const {
+    email
+  } = useContext(MyContext);
   console.log(email);
 
   const handleLogout = () => {
