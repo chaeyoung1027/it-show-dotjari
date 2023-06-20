@@ -1,30 +1,12 @@
+import React, { useState } from 'react';
 import SelectDate from './SelectDate';
+import Seat from './Seat';
 import '../css/ImaginationCafe.css';
 import BottomInfo from './BottomInfo';
-import React, { useEffect, useState, useContext } from "react";
-import { getDatabase, ref } from "firebase/database";
-import { MyContext } from '../App';
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import '../css/PersonalPage.css';
 
 /*상상카페 자리 예약*/
 function ImaginationCafe() {
   const [SelectedSeats, setSelectedSeats] = useState([]);
-  const [reservation, setReservation] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const {
-    selectedDate,
-    setselectedDate,
-    selectedTime,
-    setSelectedTime,
-    selectedMinute,
-    setSelectedMinute,
-    selectedTime2,
-    setSelectedTime2,
-    selectedMinute2,
-    setSelectedMinute2
-  } = useContext(MyContext);
 
   const handleSeatClick = (seat) => {
     const seatName = seatNames[seatsData.indexOf(seat)];
@@ -78,7 +60,6 @@ function ImaginationCafe() {
     {x: 420, y: 250, width : 105, height : 110},
     {x: 770, y: 68, width : 105, height : 110},
     {x: 770, y: 250, width : 105, height : 110},
-
   ];
   
   const handleReservation = () =>{
@@ -87,31 +68,6 @@ function ImaginationCafe() {
     }
     return reservationData
   }
-
-  useEffect(() => {
-    const database = getDatabase();
-    const reservationRef = ref(database, 'reservations');
-    const db = getFirestore();
-  
-    const fetchData = async () => {
-      try {
-        const snapshot = await getDocs(collection(db, 'reservations'));
-        const reservationData = snapshot.docs.map(doc => doc.data());
-        console.log("Firebase Firestore 예약 정보:", reservationData);
-  
-        if (reservationData.length > 0) {
-          setReservation(reservationData);
-        } else {
-          console.log("예약된 현황이 없습니다.");
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error("데이터 가져오기 오류:", error);
-      }
-    };
-  
-    fetchData();
-  }, []);
 
   const screenSize = { width: 500, height: 600 }    //나중에 조절하기 margin같은거
   return (

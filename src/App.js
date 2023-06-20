@@ -59,7 +59,7 @@ function Layout() {
 }
 
 function App() {
-  const [selectedDate, setSelectedDate] = useState('2023-06-21');
+  const [selectedDay, setSelectedDay] = useState('2023-06-21');
   const [selectedTime, setSelectedTime] = useState('7시');
   const [selectedMinute, setSelectedMinute] = useState('00분');
   const [selectedTime2, setSelectedTime2] = useState('7시');
@@ -68,8 +68,8 @@ function App() {
   return (
     <MyContext.Provider
       value={{
-        selectedDate,
-        setSelectedDate,
+        selectedDay,
+        setSelectedDay,
         selectedTime,
         setSelectedTime,
         selectedMinute,
