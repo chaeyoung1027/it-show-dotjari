@@ -64,8 +64,8 @@ function Login() {
       console.log('Email:', email);
       console.log('Password:', password);
 
-      navigate('/places/personalpage', { state: { email } });
-      //navigate('/places', { state: { email } });
+      //navigate('/places/personalpage', { state: { email } });
+      navigate('/places');
     } catch (error) {
       toast.error('로그인에 실패했습니다.');
     }

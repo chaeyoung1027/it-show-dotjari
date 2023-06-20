@@ -26,13 +26,14 @@
   text-align: left;
   white-space: nowrap;
   margin-top: 5%;
+  margin-bottom: 20%;
 }
 
-.resInfo {
-  position: absolute;
-  width: 14.5%;
+.presInfo {
+  padding: 7px 15px 7px 15px;
+  width: 110%;
   height: 8%;
-  margin-top: 1%;
+  margin-top: 10%;
   background: #FFFFFF;
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
