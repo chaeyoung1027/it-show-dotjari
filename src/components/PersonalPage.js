@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import '../css/PersonalPage.css';
-
 import { getAuth, signOut, deleteUser } from 'firebase/auth';
+import { getDatabase, ref, child, push, update, onValue } from "firebase/database";
+import '../css/PersonalPage.css';
 
 function PersonalPage() {
   const navigate = useNavigate();
+  const [reservation, setReservation] = useState(null);
 
   const handleLogout = () => {
     const auth = getAuth();
@@ -37,6 +38,21 @@ function PersonalPage() {
     }
   };
 
+  useEffect(() => {
+    const database = getDatabase();
+    const reservationRef = ref(database, 'reservationData'); // Firebase 데이터베이스 경로
+
+    // 예약 정보 변경을 감지
+    onValue(reservationRef, (snapshot) => {
+      const reservationsData = snapshot.val();
+      if (reservationsData) {
+        // 예약 정보 객체를 배열로 변환
+        const reservationsArray = Object.values(reservationsData);
+        setReservation(reservationsArray);
+      }
+    });
+  }, []);
+
   return (
     <div className="PersonalAll">
       <div className="sub-title">
@@ -46,16 +62,22 @@ function PersonalPage() {
         </h4>
       </div>
 
-      <div className="presInfo">
-        <div>
-          <div className="position-date">
-            <a className="presPosition">상상카페 B4</a>
-            <a className="presDate">2023.04.05</a>
+      {reservation ? (
+        reservation.map((item) => (
+          <div className="presInfo" key={item.email}>
+            <div>
+              <div className="position-date">
+                <a className="presPosition">{item.isCafe === 0 ? '상상카페' : '도서관'}</a>
+                <a className="presDate">{item.date}</a>
+              </div>
+              <a className="presTime">{"예약시간: "+item.startHour +"시 "+ item.startMinute +"분\n종료시간: "+item.endHour +"시 "+ item.endMinute}</a>
+            </div>
+            <button className="cancelButton">취소하기</button>
           </div>
-          <a className="presTime">2:00~3:00</a>
-        </div>
-        <button className="cancelButton">취소하기</button>
-      </div>
+        ))
+      ) : (
+        <p>로딩 중...</p>
+      )}
 
       <div className="AccountSetting">
         <div className="Logout" onClick={handleLogout}>로그아웃</div>
