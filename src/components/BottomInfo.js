@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { MyContext } from '../App';
 import '../css/BottomInfo.css';
+import { saveReservationData } from '../firebase'; // saveReservationData 함수 import
 
 function BottomInfo({ onReservation, currentComponent }) {
   const {
@@ -12,11 +13,10 @@ function BottomInfo({ onReservation, currentComponent }) {
     email
   } = useContext(MyContext);
 
-  //예약하기를 누르면 현재 선택된 좌석이
   const handleReserveClick = () => {
     const reservationData = onReservation();
     let ComponentOption = 0;
-    //현재 띄워진 컴포넌트에 따라 0/1로 구분
+
     if (currentComponent === 'ImaginationCafe') {
       ComponentOption = 0;
     } else if (currentComponent === 'Library') {
@@ -24,9 +24,20 @@ function BottomInfo({ onReservation, currentComponent }) {
     } else {
       ComponentOption = -1;
     }
+
     if (reservationData && reservationData.selectedSeats) {
       reservationData.selectedSeats.forEach((seat, index) => {
-        console.log(`${email} / ${seat} / ${ComponentOption ? '도서관' : '상카'} / ${selectedDay} / ${selectedTime} / ${selectedMinute} / ${selectedTime2} / ${selectedMinute2}`);
+        // 예약 데이터를 Firebase에 저장
+        saveReservationData(
+          email,
+          seat,
+          ComponentOption,
+          selectedDay,
+          selectedTime,
+          selectedMinute,
+          selectedTime2,
+          selectedMinute2
+        );
       });
     }
   };
