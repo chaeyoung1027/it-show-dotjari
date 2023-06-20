@@ -36,17 +36,14 @@ function Signup() {
         return;
       }
 
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      else {
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
+  
+        console.log('Email:', email);
+        console.log('Password:', password);
 
-      await firebase.database().ref('users').push({
-        email,
-        password
-      });
-
-      console.log('Email:', email);
-      console.log('Password:', password);
-
-      navigate('/login');
+        navigate('/login');
+      }
     } catch (error) {
       console.log(error);
       toast.error('회원가입에 실패했습니다.');
