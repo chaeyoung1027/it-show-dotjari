@@ -1,5 +1,5 @@
 import './App.css';
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, Outlet, Navigate } from 'react-router-dom';
 
 import ImaginationCafe from './components/ImaginationCafe';
@@ -24,18 +24,17 @@ function Layout() {
   const location = useLocation();
   const isSchoolMap = location.pathname.includes("/places/schoolmap");
   const isPersonalPage = location.pathname.includes("/places/personalpage");
-  const user = auth.currentUser;
-  const [email, setEmail] = useState("");
+  const { email, setEmail } = useContext(MyContext); // useContext 사용
 
   useEffect(() => {
     const user = auth.currentUser;
     if (user) {
       const userEmail = user.providerData[0].uid;
-      setEmail(userEmail);
+      setEmail(userEmail); // setEmail 사용
     } else {
       setEmail("");
     }
-  }, [user]);
+  }, [setEmail]); // setEmail을 의존성 배열에 추가
 
   return (
     <div>
@@ -61,6 +60,7 @@ function App() {
   const [selectedMinute, setSelectedMinute] = useState('00분');
   const [selectedTime2, setSelectedTime2] = useState('7시');
   const [selectedMinute2, setSelectedMinute2] = useState('00분');
+  const [email, setEmail] = useState('test@example.com');
 
   return (
     <MyContext.Provider
@@ -75,6 +75,8 @@ function App() {
         setSelectedTime2,
         selectedMinute2,
         setSelectedMinute2,
+        email,
+        setEmail
       }}
     >
       <Router>
