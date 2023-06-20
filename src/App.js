@@ -43,7 +43,11 @@ function Layout() {
         <Link to="/places/imaginationcafe" className='selectMenu'> 상상카페 </Link>
         <Link to="/places/library" className='selectMenu'> 도서관 </Link>
         <Link to="/places/schoolmap" className='selectMenu'> 학교 지도 </Link>
-        <a className='Name'>{email ? email : '로그인해주세요'}</a>
+        {email ? (
+          <a className='Name'>{email}</a>
+        ) : (
+          <Link to="/login" className='Name'>로그인해주세요</Link>
+        )}
         <Link to="/places/personalpage">
           <img className='profile' alt="profile" src={Profile} />
         </Link>
@@ -81,7 +85,7 @@ function App() {
     >
       <Router>
         <Routes>
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login/>} />
           <Route path='/signup' element={<SignUp />} />
 
           <Route path="/places" element={<Layout />}>
@@ -89,7 +93,7 @@ function App() {
             <Route path="imaginationcafe" element={<ImaginationCafe />} />
             <Route path="library" element={<Library />} />
             <Route path="schoolmap" element={<SchoolMap />} />
-            <Route path="personalpage" element={<PersonalPage />} />
+            <Route path="personalpage" element={<PersonalPage/>} />
             <Route path="floor2" element={<Floor2Map />} />
             <Route path="floor3" element={<Floor3Map />} />
             <Route path="floor4" element={<Floor4Map />} />

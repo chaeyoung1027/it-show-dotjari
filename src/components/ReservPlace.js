@@ -1,12 +1,19 @@
+
+import { useNavigate, useLocation } from 'react-router-dom';
 import React from 'react';
 import '../css/ReservPlace.css';
 
 function ReservPlace() {
+  const location = useLocation();
+
+  const email = location?.state?.email;
+  console.log(email);
+
   return (
     <div className='ReservAll'>
       <div className="bar"></div>
       <div className="reservText">
-        OO님,<br />
+        {email}님,<br />
         오늘 <span style={{ color: '#7C00DE' }}>예약된 장소</span>를 확인하세요.
       </div>
       <div className='resInfo'>

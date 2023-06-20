@@ -1,9 +1,8 @@
 .presInfo {
-    position: absolute;
     width: 35%;
-    height: 8.5%;
+    height: 10%;
+    padding: 5px 3px 5px 3px;
     margin-top: 1%;
-    margin-left: 13%;
     background: #FFFFFF;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
@@ -16,6 +15,7 @@
     flex-direction: column;
     justify-content: center;
   }
+
 .AccountSetting{
   position: absolute;
   width: 576px;
@@ -30,12 +30,18 @@
 }
 
 .Logout{
-  margin-top: 20px;
-  margin-left: 50px;
+  margin-top: 4.3%;
+  margin-left: 4%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-size: 18px;
 }
 .delete{
-  margin-top: 18px;
-  margin-left: 50px;
+  margin-top: 4%;
+  margin-left: 4%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-size: 18px;
 }  
 .presPosition, .presTime {
     margin-left: 3%;
@@ -73,18 +79,16 @@
   color: #9B9B9B;
 }
 
-.cancelButton{
-    box-sizing: border-box;
-
-    width: 117px;
-    height: 35px;
-    left: 525px;
-    top: 26px;
-    
-    position: absolute;
-  vertical-align: middle;
-    
-    background: #F7F7F7;
-    border: 1px solid #D1D1D1;
-    border-radius: 20px;
+.cancelButton {
+  box-sizing: border-box;
+  float: right;
+  width: 117px;
+  height: 35px;
+  position: relative; /* or position: absolute; */
+  top: -13px; /* Adjust the value as needed */
+  margin-right: 4%;
+  background: #F7F7F7;
+  border: 1px solid #D1D1D1;
+  border-radius: 20px;
 }
+

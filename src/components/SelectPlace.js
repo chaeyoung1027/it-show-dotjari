@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../css/SelectPlace.css';
 
@@ -11,6 +12,10 @@ import ProjectIcon2 from '../img/project2.png';
 function SelectPlace() {
   const [isClubIconHovered, setClubIconHovered] = useState(false);
   const [isProjectIconHovered, setProjectIconHovered] = useState(false);
+
+  const location = useLocation();
+  const email = location?.state?.email;
+  console.log(email);
 
   const handleClubIconHover = () => {
     setClubIconHovered(true);

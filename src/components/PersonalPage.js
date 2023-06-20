@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getAuth, signOut, deleteUser } from 'firebase/auth';
-import { getDatabase, ref, child, push, update, onValue } from "firebase/database";
+import { getDatabase, ref, remove, get } from "firebase/database";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import '../css/PersonalPage.css';
 
-function PersonalPage() {
+function PersonalPage({ userEmail }) {
   const navigate = useNavigate();
-  const [reservation, setReservation] = useState(null);
+  const [reservation, setReservation] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const location = useLocation();
+  const email = location?.state?.email;
+  console.log(email);
 
   const handleLogout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        // 로그아웃 성공 시 로그인 페이지로 이동
         navigate('/login');
       })
       .catch((error) => {
-        // 로그아웃 실패 시 에러 처리
         console.error("로그아웃 오류:", error);
       });
   };
@@ -28,30 +32,74 @@ function PersonalPage() {
     if (user) {
       deleteUser(user)
         .then(() => {
-          // 계정 탈퇴 성공 시 로그인 페이지로 이동 또는 다른 처리
           navigate('/login');
         })
         .catch((error) => {
-          // 계정 탈퇴 실패 시 에러 처리
           console.error("계정 탈퇴 오류:", error);
         });
     }
   };
 
+  const handleCancelReservation = (reservationId) => {
+    // const database = getDatabase();
+    // const reservationRef = ref(database, 'reservations/' + reservationId);
+  
+    // // Firebase Realtime Database에서 예약 정보 가져오기
+    // get(reservationRef)
+    //   .then((snapshot) => {
+    //     const reservationData = snapshot.val();
+  
+    //     if (reservationData) {
+    //       // 예약 정보의 일치 여부 확인
+    //       if (reservationData.email === email) {
+    //         // 일치하는 경우 예약 정보 삭제
+    //         remove(reservationRef)
+    //           .then(() => {
+    //             console.log("예약 취소 완료:", reservationId);
+    //             // 예약 정보를 새로고침하거나 다른 작업을 수행할 수 있습니다.
+    //           })
+    //           .catch((error) => {
+    //             console.error("예약 취소 오류:", error);
+    //           });
+    //       } else {
+    //         console.log("일치하는 예약 정보가 없습니다.");
+    //       }
+    //     } else {
+    //       console.log("예약 정보를 찾을 수 없습니다.");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("예약 정보 가져오기 오류:", error);
+    //   });
+  };
+  
+
   useEffect(() => {
     const database = getDatabase();
-    const reservationRef = ref(database, 'reservationData'); // Firebase 데이터베이스 경로
-
-    // 예약 정보 변경을 감지
-    onValue(reservationRef, (snapshot) => {
-      const reservationsData = snapshot.val();
-      if (reservationsData) {
-        // 예약 정보 객체를 배열로 변환
-        const reservationsArray = Object.values(reservationsData);
-        setReservation(reservationsArray);
+    const reservationRef = ref(database, 'reservations');
+    const db = getFirestore();
+  
+    const fetchData = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, 'reservations'));
+        const reservationData = snapshot.docs.map(doc => doc.data());
+        console.log("Firebase Firestore 예약 정보:", reservationData);
+  
+        if (reservationData.length > 0) {
+          setReservation(reservationData);
+        } else {
+          console.log("예약된 현황이 없습니다.");
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("데이터 가져오기 오류:", error);
       }
-    });
+    };
+  
+    fetchData();
   }, []);
+
+  const filteredReservations = reservation.filter(item => item.email === email);
 
   return (
     <div className="PersonalAll">
@@ -60,24 +108,30 @@ function PersonalPage() {
         <h4 className="Explanation">
           &nbsp; 예약된 현황을 확인하고, 일정이 변동되었다면 손 쉽게 취소하세요.
         </h4>
-      </div>
 
-      {reservation ? (
-        reservation.map((item) => (
-          <div className="presInfo" key={item.email}>
-            <div>
-              <div className="position-date">
-                <a className="presPosition">{item.isCafe === 0 ? '상상카페' : '도서관'}</a>
-                <a className="presDate">{item.date}</a>
+        <div className="reservation">
+          {loading ? (
+            <p>로딩 중...</p>
+          ) : filteredReservations.length > 0 ? (
+            filteredReservations.map((item) => (
+              <div className="presInfo" key={item.email}>
+                <div>
+                  <div className="position-date">
+                    <a className="presPosition">{item.componentOption === 0 ? '상상카페' : '도서관'}</a>
+                    <a className="presDate">{item.selectedDay + "일"}</a>
+                  </div>
+                  
+                  <a className="presTime">{"예약시간: " + item.selectedTime + " " + item.selectedMinute + "\n종료시간: " + item.selectedTime2 + " " + item.selectedMinute2}</a>
+                  <button className="cancelButton" onClick={() => handleCancelReservation(item.reservationId)}>취소하기</button>
+                </div>
+                
               </div>
-              <a className="presTime">{"예약시간: "+item.startHour +"시 "+ item.startMinute +"분\n종료시간: "+item.endHour +"시 "+ item.endMinute}</a>
-            </div>
-            <button className="cancelButton">취소하기</button>
-          </div>
-        ))
-      ) : (
-        <p>로딩 중...</p>
-      )}
+            ))
+          ) : (
+            <p>예약된 현황이 없습니다.</p>
+          )}
+        </div>
+      </div>
 
       <div className="AccountSetting">
         <div className="Logout" onClick={handleLogout}>로그아웃</div>
