@@ -59,18 +59,17 @@ function Layout() {
 }
 
 function App() {
-  const [selectedDay, setSelectedDay] = useState('20일');
+  const [selectedDate, setSelectedDate] = useState('2023-06-21');
   const [selectedTime, setSelectedTime] = useState('7시');
   const [selectedMinute, setSelectedMinute] = useState('00분');
   const [selectedTime2, setSelectedTime2] = useState('7시');
   const [selectedMinute2, setSelectedMinute2] = useState('00분');
   const [email, setEmail] = useState('test@example.com');
-
   return (
     <MyContext.Provider
       value={{
-        selectedDay,
-        setSelectedDay,
+        selectedDate,
+        setSelectedDate,
         selectedTime,
         setSelectedTime,
         selectedMinute,
