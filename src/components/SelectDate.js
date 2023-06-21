@@ -95,7 +95,7 @@ function SelectDate() {
       </option>
     ));
   };
-
+  const today = new Date();
   return (
     <div className='selection-container'>
       <form onSubmit={handleSubmit}>
@@ -104,7 +104,8 @@ function SelectDate() {
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             className='select-date'
-            dateFormat="yyyy/MM/dd" // Set the date format here
+            dateFormat="yyyy/MM/dd" 
+            minDate={today}
           />
           {/* <select
             id="day"
