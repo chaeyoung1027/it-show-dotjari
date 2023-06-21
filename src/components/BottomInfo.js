@@ -47,7 +47,7 @@ function BottomInfo({ onReservation, currentComponent }) {
 
       // Display the toast message in the top-right corner
       toast.success('예약이 완료되었습니다.', {
-        position: toast.POSITION.TOP_RIGHT
+        position: toast.POSITION.TOP_LEFT
       });
     }
   };

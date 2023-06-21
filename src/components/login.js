@@ -117,7 +117,7 @@ function Login() {
         </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
-      <ToastContainer autoClose={2000} /> {/* 토스트 컨테이너 추가 */}
+      <ToastContainer autoClose={2000} position="top-left" /> {/* 토스트 컨테이너 추가 */}
     </div>
   );
 }

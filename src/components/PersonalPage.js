@@ -4,6 +4,8 @@ import { getAuth, signOut, deleteUser } from 'firebase/auth';
 import { getDatabase, ref, remove } from "firebase/database";
 import { MyContext } from '../App';
 import { getFirestore, collection, getDocs, getDoc, doc, deleteDoc } from "firebase/firestore";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../css/PersonalPage.css';
 
 function PersonalPage({ userEmail }) {
@@ -58,9 +60,27 @@ function PersonalPage({ userEmail }) {
                 console.log("예약 취소 완료:", reservationId);
                 const updatedReservation = reservation.filter(item => item.id !== reservationId);
                 setReservation(updatedReservation);
+                toast.success('예약이 취소되었습니다.', {
+                  position: "top-left",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined
+                });
               })
               .catch((error) => {
                 console.error("예약 취소 오류:", error);
+                toast.error('예약 취소 중 오류가 발생했습니다.', {
+                  position: "top-left",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined
+                });
               });
           } else {
             console.log("일치하는 예약 정보가 없습니다.");
@@ -71,6 +91,15 @@ function PersonalPage({ userEmail }) {
       })
       .catch((error) => {
         console.error("예약 정보 가져오기 오류:", error);
+        toast.error('예약 정보를 가져오는 중 오류가 발생했습니다.', {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        });
       });
   };
 
@@ -105,6 +134,7 @@ function PersonalPage({ userEmail }) {
 
   return (
     <div className="PersonalAll">
+      <ToastContainer />
       <div className="sub-title">
         <h2>예약 현황</h2>
         <h4 className="Explanation">
@@ -136,7 +166,7 @@ function PersonalPage({ userEmail }) {
         <div className="Logout" onClick={handleLogout}>로그아웃</div>
         <div className="delete" onClick={handleDeleteAccount}>계정 탈퇴하기</div>
       </div>
-    </div>
+    </div> 
   );
 }
 

@@ -97,7 +97,7 @@ function Signup() {
         </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
-      <ToastContainer autoClose={2000}/>
+      <ToastContainer autoClose={2000} position="top-left" />
     </div>
   );
 }
