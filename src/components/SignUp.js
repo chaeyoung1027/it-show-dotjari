@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Routes, Route, useNavigate } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
@@ -91,6 +91,10 @@ function Signup() {
         <br /><br />
         <br /><br />
         <button id="btn" onClick={handleSignUp} style={{ background: '#7C00DE', color: '#fff' }}>회원가입</button>
+        <br /><br></br>
+        <Link to="/login">
+          <button id="btn">로그인</button>
+        </Link>
       </div>
       <img className="circle-icon" src={circleIcon} alt="Circle Icon" />
       <ToastContainer autoClose={2000}/>
@@ -101,7 +105,7 @@ function Signup() {
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Signup />} />
     </Routes>
     <ToastContainer />
   </Router>,
