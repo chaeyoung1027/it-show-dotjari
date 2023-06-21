@@ -1,98 +1,104 @@
-.presInfo {
-    width: 110%;
-    height: 10%;
-    padding: 6px 10px 6px 10px;
-    margin-top: 5%;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
-    border-radius: 20px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 30px;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.reservText {
-  margin-bottom: 30%;
-}
-
-.AccountSetting{
-  position: absolute;
-  width: 576px;
-  height: 125px;
-  margin-top: 5%;
-  margin-left: 13%;
-  border-radius: 20px;
+.presInfo2 {
+  width: 33%;
+  height: 10%;
+  padding: 6px 10px 6px 10px;
+  margin-top: 2%;
+  background: #FFFFFF;
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
-  font-size: 15px;
-  font : Inter;
-
-}
-
-.Logout{
-  margin-top: 4.3%;
-  margin-left: 4%;
-  font-family: 'Inter';
-  font-style: normal;
-  font-size: 18px;
-}
-.delete{
-  margin-top: 4%;
-  margin-left: 4%;
-  font-family: 'Inter';
-  font-style: normal;
-  font-size: 18px;
-}  
-.presPosition, .presTime {
-    margin-left: 3%;
-}
-.position-date {
-    display: flex;
-    justify-content: flex-start;
-}
-.presPosition {
-  height: 30px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  color: #000000;
-}
-
-.presTime {
-  height: 30px;
+  border-radius: 20px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 30px;
-  color: #9B9B9B;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reservation {
+  margin-top: 3.5%;
+}
+
+.reservText {
+margin-bottom: 30%;
+}
+
+.AccountSetting{
+position: absolute;
+width: 576px;
+height: 125px;
+margin-top: 5%;
+margin-left: 13%;
+border-radius: 20px;
+box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
+font-size: 15px;
+font : Inter;
+}
+
+.Logout{
+margin-top: 4.3%;
+margin-left: 4%;
+font-family: 'Inter';
+font-style: normal;
+font-size: 18px;
+}
+
+.delete{
+margin-top: 4%;
+margin-left: 4%;
+font-family: 'Inter';
+font-style: normal;
+font-size: 18px;
+}  
+
+.presPosition, .presTime {
+  margin-left: 3%;
+}
+
+.position-date {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.presPosition {
+height: 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+color: #000000;
+}
+
+.presTime {
+height: 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 30px;
+color: #9B9B9B;
 }
 
 .presDate {
-  margin-left: 20px;
-  height: 30px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: #9B9B9B;
+margin-left: 20px;
+height: 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+color: #9B9B9B;
 }
 
 .cancelButton {
-  box-sizing: border-box;
-  float: right;
-  width: 117px;
-  height: 35px;
-  position: relative; /* or position: absolute; */
-  top: -13px; /* Adjust the value as needed */
-  margin-right: 4%;
-  background: #F7F7F7;
-  border: 1px solid #D1D1D1;
-  border-radius: 20px;
+box-sizing: border-box;
+float: right;
+width: 117px;
+height: 35px;
+position: relative; /* or position: absolute; */
+top: -13px; /* Adjust the value as needed */
+margin-right: 4%;
+background: #F7F7F7;
+border: 1px solid #D1D1D1;
+border-radius: 20px;
 }
-

@@ -75,7 +75,6 @@ function PersonalPage({ userEmail }) {
     //     console.error("예약 정보 가져오기 오류:", error);
     //   });
   };
-  
 
   useEffect(() => {
     const database = getDatabase();
@@ -111,23 +110,20 @@ function PersonalPage({ userEmail }) {
         <h4 className="Explanation">
           &nbsp; 예약된 현황을 확인하고, 일정이 변동되었다면 손 쉽게 취소하세요.
         </h4>
-
         <div className="reservation">
           {loading ? (
             <p>로딩 중...</p>
           ) : filteredReservations.length > 0 ? (
             filteredReservations.map((item) => (
-              <div className="presInfo" key={item.email}>
+              <div className="presInfo2" key={item.email}>
                 <div>
                   <div className="position-date">
                     <a className="presPosition">{item.componentOption === 0 ? '상상카페' : '도서관'}</a>
                     <a className="presDate">{"좌석 정보"}</a>
                   </div>
-                  
                   <a className="presTime">{item.selectedDay+"일 " + item.selectedTime + " " + item.selectedMinute + " ~ " + item.selectedTime2 + " " + item.selectedMinute2}</a>
                   <button className="cancelButton" onClick={() => handleCancelReservation(item.reservationId)}>취소하기</button>
                 </div>
-                
               </div>
             ))
           ) : (
