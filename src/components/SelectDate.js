@@ -85,6 +85,17 @@ function SelectDate() {
       </option>
     ));
   };
+  const renderTimeOptions2 = () => {
+    const times = [
+      '8시', '9시', '10시', '11시', '12시', '13시', '14시', '15시', '16시', '17시', '18시', '19시', '20시'
+    ];
+
+    return times.map((time) => (
+      <option key={time} value={time}>
+        {time}
+      </option>
+    ));
+  };
 
   const renderMinuteOptions = () => {
     const minutes = ['00분', '30분'];
@@ -141,7 +152,7 @@ function SelectDate() {
             required
             className="select-time"
           >
-            {renderTimeOptions()}
+            {renderTimeOptions2()}
           </select>
           <select
             id="minute2"
