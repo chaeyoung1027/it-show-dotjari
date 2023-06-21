@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function BottomInfo({ onReservation, currentComponent }) {
   const {
-    selectedDay,
+    selectedDate,
     selectedTime,
     selectedMinute,
     selectedTime2,
@@ -37,7 +37,7 @@ function BottomInfo({ onReservation, currentComponent }) {
           email,
           seat,
           ComponentOption,
-          selectedDay,
+          selectedDate,
           selectedTime,
           selectedMinute,
           selectedTime2,
