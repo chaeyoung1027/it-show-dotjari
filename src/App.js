@@ -39,6 +39,7 @@ function Layout() {
   return (
     <div>
       <div className='MainTopStyle'>
+        <div className='MainTopStyle'>
         <Link to="/places" className="title">DotJari.</Link>
         <Link to="/places/imaginationcafe" className='selectMenu'> 상상카페 </Link>
         <Link to="/places/library" className='selectMenu'> 도서관 </Link>
@@ -51,6 +52,7 @@ function Layout() {
         <Link to="/places/personalpage">
           <img className='profile' alt="profile" src={Profile} />
         </Link>
+        </div>
       </div>
       {!isSchoolMap && !isPersonalPage && <ReservPlace />}
       <Outlet />
