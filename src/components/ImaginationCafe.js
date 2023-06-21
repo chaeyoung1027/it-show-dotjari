@@ -1,22 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SelectDate from './SelectDate';
 import Seat from './Seat';
 import '../css/ImaginationCafe.css';
 import BottomInfo from './BottomInfo';
+import { getFirestore, collection, getDocs,onSnapshot } from "firebase/firestore";
 
-/*상상카페 자리 예약*/
+/* 상상카페 자리 예약 */
 function ImaginationCafe() {
-  const [SelectedSeats, setSelectedSeats] = useState([]);
+  // 현재 누르고 있는 좌석
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [reservation, setReservation] = useState([]);
 
+  // Firestore에서 예약 데이터 가져오기
+  const getReservationData = async () => {
+    const firestore = getFirestore();
+    const reservationRef = collection(firestore, 'reservations');
+    const querySnapshot = await getDocs(reservationRef);
+    const reservations = querySnapshot.docs.map((doc) => doc.data());
+    setReservation(reservations);
+  };
+
+  useEffect(() => {
+    getReservationData();
+  }, []);
+  useEffect(() => {
+    const firestore = getFirestore();
+    const reservationRef = collection(firestore, 'reservations');
+
+    const unsubscribe = onSnapshot(reservationRef, (querySnapshot) => {
+      const reservations = querySnapshot.docs.map((doc) => doc.data());
+      setReservation(reservations);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  // 누르고 있는 좌석에 효과
   const handleSeatClick = (seat) => {
     const seatName = seatNames[seatsData.indexOf(seat)];
-    if (SelectedSeats.includes(seatName)) {
-      setSelectedSeats(SelectedSeats.filter((selectedSeat) => selectedSeat !== seatName));
+    const isSeatReserved = reservation.some((reservedSeat) => reservedSeat.componentOption === 0 && reservedSeat.seat === seatName);
+
+    if (isSeatReserved) {
+      return; // Seat is reserved, do nothing
+    }
+
+    if (selectedSeats.includes(seatName)) {
+      setSelectedSeats(selectedSeats.filter((selectedSeat) => selectedSeat !== seatName));
     } else {
-      setSelectedSeats([...SelectedSeats, seatName]);
+      setSelectedSeats([...selectedSeats, seatName]);
     }
   };
-  
+
   const seatNames = ['A1', 'A2', 'A3', 'A4','A5','A6', 'B1', 'B2', 'B3','B4','B5','B6', 'C1','C2','C3','C4','D1','D2','D3','D4','E1','E2','E3','E4','F1','F2','F3','F4', ' ', ' ', ' ', ' ', ' ', ' ',];
   const seatsData = [
     //A
@@ -61,51 +97,74 @@ function ImaginationCafe() {
     {x: 770, y: 68, width : 105, height : 110},
     {x: 770, y: 250, width : 105, height : 110},
   ];
-  
-  const handleReservation = () =>{
-    const reservationData={
-      selectedSeats:SelectedSeats
+
+  const handleReservation = () => {
+    const reservationData = {
+      selectedSeats: selectedSeats
     }
-    return reservationData
+    return reservationData;
   }
 
-  const screenSize = { width: 500, height: 600 }    //나중에 조절하기 margin같은거
+  const screenSize = { width: 500, height: 600 }; // 나중에 조절하기 margin같은거
   return (
     <div className='ImaginationCafeAll'>
       <div className="sub-title">
-        <h2>상상카페 : {SelectedSeats.join(", ")}</h2>
+        <h2>상상카페 : {selectedSeats.join(", ")}</h2>
         <h4 className="Explanation">
           &nbsp; 원하는 시간대를 검색한 후 남은 좌석을 선택해주세요
         </h4>
       </div>
       <SelectDate />
 
-      <div style={ {width: screenSize.width, height: screenSize.height, position: "relative" } }>
-        {
-            seatsData.map((s, idx) => {
-              const seatName = seatNames[idx];
-              const isSeatSelected = SelectedSeats.includes(seatName);
-              const isSeatAvailable = !isSeatSelected;
-              const seatClassName = `Iseat ${isSeatSelected ? "selected" : isSeatAvailable ? "available" : ""}`;
-              if(seatName!==' '){
-                return <div 
+      <div style={{ width: screenSize.width, height: screenSize.height, position: "relative" }}>
+        {seatsData.map((s, idx) => {
+          const seatName = seatNames[idx];
+          const isSeatSelected = selectedSeats.includes(seatName);
+          const isSeatAvailable = !isSeatSelected;
+          const seatClassName = `Iseat ${isSeatSelected ? "selected" : isSeatAvailable ? "available" : ""}`;
+
+          let renderSeat = null;
+          if (seatName !== ' ') {
+            renderSeat = (
+              <div
                 className={seatClassName}
-                style={{ position: "absolute", left: s.x, top: s.y}}
-                onClick={() =>handleSeatClick(s)}
-                seleted={SelectedSeats.includes(seatNames[idx])}>
-                  {seatNames[idx]}</div>
-              }
-              else{
-                return <div
-                style={{position : "absolute", left : s.x, top : s.y, width : s.width, height : s.height}}
+                style={{ position: "absolute", left: s.x, top: s.y }}
+                onClick={() => handleSeatClick(s)}
+                selected={selectedSeats.includes(seatName)}
+                key={idx}
+              >
+                {seatNames[idx]}
+              </div>
+            );
+          } else {
+            renderSeat = (
+              <div
+                style={{ position: "absolute", left: s.x, top: s.y, width: s.width, height: s.height }}
                 className='table'
-                >
-                </div>
-              }
-            })
-        }
-    </div>
-      <BottomInfo onReservation={handleReservation} currentComponent="ImaginationCafe"/>
+                key={idx}
+              ></div>
+            );
+          }
+
+          // Check if the seat is reserved
+          const reservedSeat = reservation.find((reservationData) => reservationData.componentOption === 0 && reservationData.seat === seatName);
+          if (reservedSeat) {
+            return (
+              <div
+                className="aselected"
+                style={{ position: "absolute", left: s.x, top: s.y }}
+                selected={selectedSeats.includes(seatName)}
+                key={idx}
+              >
+                {/* {renderSeat} */}
+              </div>
+            );
+          }
+
+          return renderSeat;
+        })}
+      </div>
+      <BottomInfo onReservation={handleReservation} currentComponent="ImaginationCafe" />
     </div>
   );
 }
