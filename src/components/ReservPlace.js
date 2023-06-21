@@ -11,16 +11,17 @@ function ReservPlace() {
   const navigate = useNavigate();
   const [reservation, setReservation] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  
   const {
-    email
+  email,
+  setEmail
   } = useContext(MyContext);
   console.log(email);
-
+  
   useEffect(() => {
-    const database = getDatabase();
-    const reservationRef = ref(database, 'reservations');
-    const db = getFirestore();
+  const database = getDatabase();
+  const reservationRef = ref(database, 'reservations');
+  const db = getFirestore();
 
     const fetchData = async () => {
       try {
