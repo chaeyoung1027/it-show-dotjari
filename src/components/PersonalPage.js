@@ -44,36 +44,36 @@ function PersonalPage({ userEmail }) {
   };
 
   const handleCancelReservation = (reservationId) => {
-    // const database = getDatabase();
-    // const reservationRef = ref(database, 'reservations/' + reservationId);
+    const database = getDatabase();
+    const reservationRef = ref(database, 'reservations/' + reservationId);
   
-    // // Firebase Realtime Database에서 예약 정보 가져오기
-    // get(reservationRef)
-    //   .then((snapshot) => {
-    //     const reservationData = snapshot.val();
+    // Firebase Realtime Database에서 예약 정보 가져오기
+    get(reservationRef)
+      .then((snapshot) => {
+        const reservationData = snapshot.val();
   
-    //     if (reservationData) {
-    //       // 예약 정보의 일치 여부 확인
-    //       if (reservationData.email === email) {
-    //         // 일치하는 경우 예약 정보 삭제
-    //         remove(reservationRef)
-    //           .then(() => {
-    //             console.log("예약 취소 완료:", reservationId);
-    //             // 예약 정보를 새로고침하거나 다른 작업을 수행할 수 있습니다.
-    //           })
-    //           .catch((error) => {
-    //             console.error("예약 취소 오류:", error);
-    //           });
-    //       } else {
-    //         console.log("일치하는 예약 정보가 없습니다.");
-    //       }
-    //     } else {
-    //       console.log("예약 정보를 찾을 수 없습니다.");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("예약 정보 가져오기 오류:", error);
-    //   });
+        if (reservationData) {
+          // 예약 정보의 일치 여부 확인
+          if (reservationData.email === email) {
+            // 일치하는 경우 예약 정보 삭제
+            remove(reservationRef)
+              .then(() => {
+                console.log("예약 취소 완료:", reservationId);
+                // 예약 정보를 새로고침하거나 다른 작업을 수행할 수 있습니다.
+              })
+              .catch((error) => {
+                console.error("예약 취소 오류:", error);
+              });
+          } else {
+            console.log("일치하는 예약 정보가 없습니다.");
+          }
+        } else {
+          console.log("예약 정보를 찾을 수 없습니다.");
+        }
+      })
+      .catch((error) => {
+        console.error("예약 정보 가져오기 오류:", error);
+      });
   };
 
   useEffect(() => {

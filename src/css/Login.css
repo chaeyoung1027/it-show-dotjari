@@ -40,7 +40,7 @@ body {
     color: #FFFFFF;
 }
 
-.login {
+div.login {
     z-index: 100;
     font-family: 'Inter';
     font-size: 18px;
@@ -48,7 +48,7 @@ body {
     align-items: center;
     text-align: center;
     color: #414141;
-    width: 470px;
+    width: 490px;
     height: 506px;
     background: #FFFFFF;
     box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
