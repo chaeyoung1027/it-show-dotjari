@@ -1,9 +1,8 @@
-
 import { useNavigate, useLocation } from 'react-router-dom';
 import React, { useEffect, useState, useContext } from "react";
 import { getAuth, signOut, deleteUser } from 'firebase/auth';
 import { getDatabase, ref, remove, get } from "firebase/database";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, onSnapshot } from "firebase/firestore";
 import { MyContext } from '../App';
 import '../css/ReservPlace.css';
 
@@ -22,13 +21,13 @@ function ReservPlace() {
     const database = getDatabase();
     const reservationRef = ref(database, 'reservations');
     const db = getFirestore();
-  
+
     const fetchData = async () => {
       try {
         const snapshot = await getDocs(collection(db, 'reservations'));
         const reservationData = snapshot.docs.map(doc => doc.data());
         console.log("Firebase Firestore 예약 정보:", reservationData);
-  
+
         if (reservationData.length > 0) {
           setReservation(reservationData);
         } else {
@@ -39,8 +38,24 @@ function ReservPlace() {
         console.error("데이터 가져오기 오류:", error);
       }
     };
-  
+
+    // 데이터 변경 감지하여 재렌더링
+    const unsubscribe = onSnapshot(collection(db, 'reservations'), (snapshot) => {
+      const reservationData = snapshot.docs.map(doc => doc.data());
+      console.log("Firebase Firestore 예약 정보:", reservationData);
+
+      if (reservationData.length > 0) {
+        setReservation(reservationData);
+      } else {
+        console.log("예약된 현황이 없습니다.");
+      }
+      setLoading(false);
+    });
+
     fetchData();
+
+    // 컴포넌트 언마운트 시 구독 취소
+    return () => unsubscribe();
   }, []);
 
   const filteredReservations = reservation.filter(item => item.email === email);
@@ -76,6 +91,7 @@ function ReservPlace() {
     </div>
   );
 }
+
 const handleCancelReservation = (reservationId) => {
   
 };
