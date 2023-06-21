@@ -149,7 +149,7 @@ function PersonalPage({ userEmail }) {
                 <div>
                   <div className="position-date">
                     <a className="presPosition">{item.componentOption === 0 ? '상상카페' : '도서관'}</a>
-                    <a className="presDate">{"좌석 정보"}</a>
+                    <a className="presDate">{item.seat}</a>
                   </div>
                   <a className="presTime">{item.selectedDay+"일 " + item.selectedTime + " " + item.selectedMinute + " ~ " + item.selectedTime2 + " " + item.selectedMinute2}</a>
                   <button className="cancelButton" onClick={() => handleCancelReservation(item.id)}>취소하기</button>
