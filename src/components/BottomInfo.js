@@ -26,8 +26,12 @@ function BottomInfo({ onReservation, currentComponent }) {
     } else {
       ComponentOption = -1;
     }
-
-    if (reservationData && reservationData.selectedSeats) {
+    if (email === '') {
+      toast.success('로그인해주세요!.', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+    else if (reservationData && reservationData.selectedSeats) {
       reservationData.selectedSeats.forEach((seat, index) => {
         saveReservationData(
           email,
