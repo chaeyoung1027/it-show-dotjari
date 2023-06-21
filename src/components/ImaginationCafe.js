@@ -6,7 +6,6 @@ import { MyContext } from '../App';
 import BottomInfo from './BottomInfo';
 import { getFirestore, collection, getDocs, onSnapshot } from "firebase/firestore";
 
-/* 상상카페 자리 예약 */
 function ImaginationCafe() {
   const {
     selectedDate,
@@ -20,11 +19,10 @@ function ImaginationCafe() {
     selectedMinute2,
     setSelectedMinute2
   } = useContext(MyContext);
-  // 현재 누르고 있는 좌석
+
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [reservation, setReservation] = useState([]);
 
-  // Firestore에서 예약 데이터 가져오기
   const getReservationData = async () => {
     const firestore = getFirestore();
     const reservationRef = collection(firestore, 'reservations');
@@ -51,13 +49,22 @@ function ImaginationCafe() {
     };
   }, []);
 
-  // 누르고 있는 좌석에 효과
   const handleSeatClick = (seat) => {
     const seatName = seatNames[seatsData.indexOf(seat)];
-    const isSeatReserved = reservation.some((reservedSeat) => reservedSeat.componentOption === 0 && reservedSeat.seat === seatName);
+    const isSeatReserved = reservation.some(
+      (reservedSeat) =>
+        reservedSeat.componentOption === 0 &&
+        reservedSeat.seat === seatName &&
+        selectedDate === reservedSeat.selectedDay &&
+        (selectedTime === reservedSeat.selectedTime &&
+        selectedMinute === reservedSeat.selectedMinute &&
+        selectedTime2 === reservedSeat.selectedTime2 &&
+        selectedMinute2 === reservedSeat.selectedMinute2)
+        //시간같고 분 다르면
+    );
 
     if (isSeatReserved) {
-      return; // Seat is reserved, do nothing
+      return;
     }
 
     if (selectedSeats.includes(seatName)) {
@@ -67,13 +74,11 @@ function ImaginationCafe() {
     }
   };
 
-  // 예약 완료 후 selectedSeats 초기화
   const handleReservation = () => {
     const reservationData = {
       selectedSeats: selectedSeats
     };
 
-    // 예약이 완료된 후에 selectedSeats를 빈 배열로 설정
     setSelectedSeats([]);
 
     return reservationData;
@@ -124,7 +129,8 @@ function ImaginationCafe() {
     { x: 770, y: 250, width: 105, height: 110 },
   ];
 
-  const screenSize = { width: 500, height: 600 }; // 나중에 조절하기 margin같은거
+  const screenSize = { width: 500, height: 600 };
+
   return (
     <div className='ImaginationCafeAll'>
       <div className="sub-title">
@@ -165,15 +171,22 @@ function ImaginationCafe() {
             );
           }
 
-          // Check if the seat is reserved
-          const reservedSeat = reservation.find((reservationData) => reservationData.componentOption === 0 && reservationData.seat === seatName &&
-            selectedDate == reservationData.selectedDay
-          //시간 조건 넣기
+          const reservedSeat = reservation.find(
+            (reservationData) =>
+              reservationData.componentOption === 0 &&
+              reservationData.seat === seatName &&
+              selectedDate === reservationData.selectedDay &&
+              // Add time condition
+              (
+                (selectedTime === reservationData.selectedTime && selectedMinute === reservationData.selectedMinute) ||
+                (selectedTime2 === reservationData.selectedTime2 && selectedMinute2 === reservationData.selectedMinute2)
+              )
           );
+
           if (reservedSeat) {
             return (
               <div
-                className="aselected"
+                className={`aselected ${reservedSeat.selectedTime === selectedTime && reservedSeat.selectedMinute === selectedMinute ? "selected-time" : ""} ${reservedSeat.selectedTime2 === selectedTime2 && reservedSeat.selectedMinute2 === selectedMinute2 ? "selected-time2" : ""}`}
                 style={{ position: "absolute", left: s.x, top: s.y }}
                 selected={selectedSeats.includes(seatName)}
                 key={idx}
