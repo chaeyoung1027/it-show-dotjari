@@ -31,7 +31,7 @@ function BottomInfo({ onReservation, currentComponent }) {
         position: toast.POSITION.TOP_RIGHT
       });
     }
-    else if(selectedTime===selectedTime2||selectedTime>selectedTime2||(selectedTime==selectedTime2&&selectedMinute<selectedMinute2)){
+    else if((selectedTime===selectedTime2&&selectedMinute===selectedMinute2)||selectedTime>selectedTime2||(selectedTime==selectedTime2&&selectedMinute>selectedMinute2)){
       toast.success('시간을 다시 선택해주세요!', {
         position: toast.POSITION.TOP_RIGHT
       });
