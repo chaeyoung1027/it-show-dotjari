@@ -48,7 +48,7 @@ function Layout() {
           <Link to="/places/library" className='selectMenu'> 도서관 </Link>
           <Link to="/places/schoolmap" className='selectMenu'> 학교 지도 </Link>
           {email ? (
-            <a className='Name'>{email}</a>
+            <Link to="/places/personalpage"><a className='Name'>{email}</a></Link>
           ) : (
             <Link to="/login" className='Name'>로그인해주세요</Link>
           )}

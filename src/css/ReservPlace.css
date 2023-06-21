@@ -39,7 +39,7 @@ div.reservText {
   height: 8%;
   margin-top: 10%;
   background: #FFFFFF;
-  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 24px #a5a5a5af;
   border-radius: 20px;
   font-family: 'Inter';
   font-style: normal;
