@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { MyContext } from '../App';
 import '../css/BottomInfo.css';
-import { saveReservationData } from '../firebase'; // saveReservationData 함수 import
+import { saveReservationData } from '../firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function BottomInfo({ onReservation, currentComponent }) {
   const {
@@ -27,7 +29,6 @@ function BottomInfo({ onReservation, currentComponent }) {
 
     if (reservationData && reservationData.selectedSeats) {
       reservationData.selectedSeats.forEach((seat, index) => {
-        // 예약 데이터를 Firebase에 저장
         saveReservationData(
           email,
           seat,
@@ -38,6 +39,11 @@ function BottomInfo({ onReservation, currentComponent }) {
           selectedTime2,
           selectedMinute2
         );
+      });
+
+      // Display the toast message in the top-right corner
+      toast.success('예약이 완료되었습니다.', {
+        position: toast.POSITION.TOP_RIGHT
       });
     }
   };
@@ -51,6 +57,7 @@ function BottomInfo({ onReservation, currentComponent }) {
       <button className='ResvButton' onClick={handleReserveClick}>
         예약하기
       </button>
+      <ToastContainer />
     </div>
   );
 }

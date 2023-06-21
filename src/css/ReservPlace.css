@@ -1,7 +1,7 @@
 .ReservAll {
   float: right;
   text-align: left;
-  margin-right: 14%;
+  margin-right: 12%;
   margin-bottom: 10%;
   position: relative; /* 위치 지정을 위해 필요한 설정 */
 }
