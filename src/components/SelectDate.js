@@ -6,8 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function SelectDate() {
   const {
-    selectedDay,
-    setSelectedDay,
+    selectedDate,
+    setSelectedDate,
     selectedTime,
     setSelectedTime,
     selectedMinute,
@@ -19,18 +19,18 @@ function SelectDate() {
   } = useContext(MyContext);
   const [startDate, setStartDate] = useState(new Date());
 
-  const getToday = () => {
-    const today = new Date();
-    return today.getDate(); // 일(day)을 반환
-  };
+  // const getToday = () => {
+  //   const today = new Date();
+  //   return today.getDate(); // 일(day)을 반환
+  // };
 
-  useEffect(() => {
-    setSelectedDay(getToday());
-  }, []);
+  // useEffect(() => {
+  //   setSelectedDay(getToday());
+  // }, []);
 
-  const handleDayChange = (e) => {
-    setSelectedDay(e.target.value);
-  };
+  // const handleDayChange = (e) => {
+  //   setSelectedDay(e.target.value);
+  // };
 
   const handleTimeChange = (e) => {
     setSelectedTime(e.target.value);
@@ -47,25 +47,32 @@ function SelectDate() {
   const handleMinuteChange2 = (e) => {
     setSelectedMinute2(e.target.value);
   };
+  
+  const handleDateChange = (date) => {
+    setSelectedDate(`${date.getFullYear()} ${date.getMonth() + 1} ${date.getDate()}`);
+  };
+  useEffect(() => {
+    setSelectedDate(`${startDate.getFullYear()} ${startDate.getMonth() + 1} ${startDate.getDate()}`);
+    }, [startDate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Selected Day:', selectedDay);
+    console.log('Selected Day:', selectedDate);
     console.log('Selected Time:', selectedTime);
     console.log('Selected Minute:', selectedMinute);
     console.log('Selected Time 2:', selectedTime2);
     console.log('Selected Minute 2:', selectedMinute2);
   };
 
-  const renderDayOptions = () => {
-    const days = [...Array(31).keys()].map((day) => day + 1);
+  // const renderDayOptions = () => {
+  //   const days = [...Array(31).keys()].map((day) => day + 1);
 
-    return days.map((day) => (
-      <option key={day} value={day}>
-        {day}일
-      </option>
-    ));
-  };
+  //   return days.map((day) => (
+  //     <option key={day} value={day}>
+  //       {day}일
+  //     </option>
+  //   ));
+  // };
 
   const renderTimeOptions = () => {
     const times = [
