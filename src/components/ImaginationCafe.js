@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import SelectDate from './SelectDate';
 import Seat from './Seat';
 import '../css/ImaginationCafe.css';
+import { MyContext } from '../App';
 import BottomInfo from './BottomInfo';
 import { getFirestore, collection, getDocs,onSnapshot } from "firebase/firestore";
 
 /* 상상카페 자리 예약 */
 function ImaginationCafe() {
+  const {
+    selectedDate,
+    setSelectedDate,
+    selectedTime,
+    setSelectedTime,
+    selectedMinute,
+    setSelectedMinute,
+    selectedTime2,
+    setSelectedTime2,
+    selectedMinute2,
+    setSelectedMinute2
+  } = useContext(MyContext);
   // 현재 누르고 있는 좌석
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [reservation, setReservation] = useState([]);
@@ -147,7 +160,10 @@ function ImaginationCafe() {
           }
 
           // Check if the seat is reserved
-          const reservedSeat = reservation.find((reservationData) => reservationData.componentOption === 0 && reservationData.seat === seatName);
+          const reservedSeat = reservation.find((reservationData) => reservationData.componentOption === 0 && reservationData.seat === seatName &&
+          selectedDate == reservationData.selectedDay
+          //시간 조건 넣기
+          );
           if (reservedSeat) {
             return (
               <div
