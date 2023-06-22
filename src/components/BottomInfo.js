@@ -15,6 +15,10 @@ function BottomInfo({ onReservation, currentComponent }) {
     email
   } = useContext(MyContext);
 
+  const currentDate = new Date();
+  const currentHour = currentDate.getHours(); // Get the current hour (0-23)
+  const currentMinute = currentDate.getMinutes();
+
   const handleReserveClick = () => {
     const reservationData = onReservation();
     let ComponentOption = 0;
@@ -31,7 +35,12 @@ function BottomInfo({ onReservation, currentComponent }) {
         position: toast.POSITION.TOP_RIGHT
       });
     }
-    else if((selectedTime===selectedTime2&&selectedMinute===selectedMinute2)||selectedTime>selectedTime2||(selectedTime==selectedTime2&&selectedMinute>selectedMinute2)){
+    if(parseInt(selectedTime)<currentHour||(selectedTime==currentHour && parseInt(selectedMinute)<currentMinute)){
+      toast.success('이미 지난 시간입니다! \n 시간을 다시 확인해주세요', {
+        position: toast.POSITION.TOP_RIGHT
+      });
+    }
+    else if((selectedTime===selectedTime2&&selectedMinute===selectedMinute2)||selectedTime>selectedTime2||(selectedTime==selectedTime2&&selectedMinute>selectedMinute2)||selectedTime<selectedTime2){
       toast.success('시간을 다시 선택해주세요!', {
         position: toast.POSITION.TOP_RIGHT
       });
