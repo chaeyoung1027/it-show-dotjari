@@ -31,17 +31,21 @@ function PersonalPage({ userEmail }) {
   };
 
   const handleDeleteAccount = () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    if (user) {
-      deleteUser(user)
-        .then(() => {
-          navigate('/login');
-        })
-        .catch((error) => {
-          console.error("계정 탈퇴 오류:", error);
-        });
+    const confirmed = window.confirm("계정을 탈퇴하시겠습니까?");
+  
+    if (confirmed) {
+      const auth = getAuth();
+      const user = auth.currentUser;
+  
+      if (user) {
+        deleteUser(user)
+          .then(() => {
+            navigate('/login');
+          })
+          .catch((error) => {
+            console.error("계정 탈퇴 오류:", error);
+          });
+      }
     }
   };
 
