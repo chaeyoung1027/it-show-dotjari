@@ -199,7 +199,7 @@ function ImaginationCafe() {
           return renderSeat;
         })}
       </div>
-      <BottomInfo onReservation={handleReservation} currentComponent="ImaginationCafe" />
+      <BottomInfo onReservation={handleReservation} currentComponent="ImaginationCafe" selectedSeats = {selectedSeats}/>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { saveReservationData } from '../firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function BottomInfo({ onReservation, currentComponent }) {
+function BottomInfo({ onReservation, currentComponent , selectedSeats}) {
   const {
     selectedDate,
     selectedTime,
@@ -40,12 +40,12 @@ function BottomInfo({ onReservation, currentComponent }) {
         position: toast.POSITION.TOP_RIGHT
       });
     }
-    else if((selectedTime===selectedTime2&&selectedMinute===selectedMinute2)||selectedTime>selectedTime2||(selectedTime==selectedTime2&&selectedMinute>selectedMinute2)||selectedTime<selectedTime2){
+    else if((selectedTime===selectedTime2&&selectedMinute===selectedMinute2)||selectedTime>selectedTime2||(selectedTime==selectedTime2&&parseInt(selectedMinute)>parseInt(selectedMinute2))){
       toast.success('시간을 다시 선택해주세요!', {
         position: toast.POSITION.TOP_RIGHT
       });
     }
-    else if(reservationData==''){
+    else if(selectedSeats==undefined){
       toast.success('좌석을 선택해주세요', {  //TODO : 좌석이 선택이 안되어있으면 띄우기
         position: toast.POSITION.TOP_RIGHT
       });
