@@ -134,7 +134,7 @@ function ImaginationCafe() {
   return (
     <div className='ImaginationCafeAll'>
       <div className="sub-title">
-        <h2>상상카페 : {selectedSeats.join(", ")}</h2>
+        <h2>상상카페</h2>
         <h4 className="Explanation">
           &nbsp; 원하는 시간대를 검색한 후 남은 좌석을 선택해주세요
         </h4>
